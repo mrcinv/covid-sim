@@ -8,7 +8,7 @@ $$
 f(x)=\frac{ab}{(a−b)e^{−cx}+b}
 $$
 
-![](slologplot.png)
+![](sloplot.png)
 
 Of particular interest is the parameter a since
 
