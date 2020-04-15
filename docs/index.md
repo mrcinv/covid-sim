@@ -2,13 +2,13 @@
 title: Coronavirus forecasts
 ---
 
-![](https://github.com/pmkink/pandemic-of-2020/blob/master/docs/slologplot.svg)
-
 A basic model for the cumulative number of cases in an epidemic is the logistic curve, which can be written as
 
 $$
 f(x)=\frac{ab}{(a−b)e^{−cx}+b}
 $$
+
+![](https://github.com/pmkink/pandemic-of-2020/blob/master/docs/slologplot.svg)
 
 Of particular interest is the parameter a since
 
