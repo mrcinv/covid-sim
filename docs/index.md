@@ -25,5 +25,5 @@ g(a,b,c)=\sum_if((x_i;a,b,c)−x_i)^2
 $$
 
 We are viewing g as a function of the uknown parameters (a,b,c) since the data xi is given. Because f is nonlinear in a,b,c, the derivative of g is also nonlinear, so the minimum cannot be found by solving a linear system of equations (using normal systems, pseudoinverses etc). But it can be done in a variety of other ways. The results below are computed using the Gauss-Newton method. Of course the minimum does not depend on the method used, although how easy it is to find the minimum may.
-
+[link na stran](test.md)
 ![podatki za kitajsko](corona_kitajska.png)
