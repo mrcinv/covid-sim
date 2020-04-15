@@ -8,7 +8,7 @@ $$
 f(x)=\frac{ab}{(a−b)e^{−cx}+b}
 $$
 
-![](https://github.com/pmkink/pandemic-of-2020/blob/master/docs/slologplot.svg)
+![](slologplot.svg)
 
 Of particular interest is the parameter a since
 
