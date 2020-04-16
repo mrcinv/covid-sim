@@ -14,7 +14,7 @@ The following graph shows the current (as of **April 15**) best fit for total nu
 
 ![](slologgraf.png)
 
-This plot shows the daily increases and daily estimates estimates (together with rough expected error estimates) and the current projected curve.
+This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve.
 
 ![](slograf.png)
 
