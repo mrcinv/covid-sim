@@ -17,8 +17,8 @@ This plot shows the daily increases and estimates (together with rough error est
 ![](slodfgraf.png) ![](sloprogplot.png)
 
 <p float="left">
-  <img src="/slodfgraf.png" width="100" />
-  <img src="/sloprogplot.png" width="100" /> 
+  <img src="slodfgraf.png" width="400" />
+  <img src="sloprogplot.png" width="400" /> 
 </p>
 
 ### Italy
