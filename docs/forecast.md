@@ -26,7 +26,7 @@ The last plot shows the percentage of people that have already been infected rel
 
 ### Italy
 
-The current (as of **April 14**) best 3 week data fir for Italy.
+The current (as of **April 14**) best 3-week data fit for Italy.
 
 ![](italyloggraf.png) 
 
@@ -40,13 +40,13 @@ The large error estimates of late mean the numbers are deviating the current com
 
 ### Austria
 
-The current (as of **April 14**) best 3 week data fit for Austria.
+The current (as of **April 14**) best 3-week data fit for Austria.
 
 ![](austrialoggraf.png)
 
 ![](austriagraf.png)
 
-After a quite long period of stable projections for Austria, the error estimates increased considerably in the first halp of April.
+After a quite long period of stable projections for Austria, the error estimates increased considerably in the first half of April when the numbers began overshooting the projection by much more than expected. Consequently, the projection is unreliable for now.
 
 ![](austriadfgraf.png)
 
@@ -54,7 +54,7 @@ After a quite long period of stable projections for Austria, the error estimates
 
 ### Germany
 
-The current (as of **April 14**) best 3 week data fir for Germany.
+The current (as of **April 14**) best 3-week data fit for Germany.
 
 ![](germanloggraf.png)
 
