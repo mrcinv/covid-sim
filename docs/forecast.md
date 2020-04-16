@@ -6,13 +6,15 @@ The the theory used to obtain these estimates is explained under [Theory](theory
 
 ### Slovenia
 
-
+The following graph shows the current (as of **April 15**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
 
 ![](slologgraf.png)
 
+This plot shows the daily increases and estimates (together with rough error estimates) and the current projected curve.
+
 ![](slograf.png)
 
-![](slodfgraf.png) ![](sloprogplot.png)
+![](slodfgraf.png) | ![](sloprogplot.png)
 
 ### Italy
 
