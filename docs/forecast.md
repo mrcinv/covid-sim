@@ -18,7 +18,7 @@ This plot shows the daily increases and estimates (together with rough error est
 
 ![](slograf.png)
 
-The next graph shows the estimated days since the peak of the outbreak, computed on the given date. If the projection is stable, the estimated distance from the peak should progress by 1 for each day that passes.
+The next graph shows the estimated number of days since the peak of the outbreak, computed on the given date. If the projection is stable, the estimated distance from the peak should progress by 1 for each day that passes.
 
 ![](slodfgraf.png) 
 
