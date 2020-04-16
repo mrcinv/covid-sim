@@ -21,3 +21,23 @@ The the theory used to obtain these estimates is explained under [Theory](theory
 ![](italydfgraf.png)
 
 ![](italyprogplot.png)
+
+### Austria
+
+![](austrialoggraf.png)
+
+![](austriagraf.png)
+
+![](austriadfgraf.png)
+
+![](austriaprogplot.png)
+
+### Germany
+
+![](germanloggraf.png)
+
+![](germangraf.png)
+
+![](germandfgraf.png)
+
+![](germanprogplot.png)
