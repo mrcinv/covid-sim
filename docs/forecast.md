@@ -1,6 +1,6 @@
-**The only numbers used in the computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
+**The only numbers used in the following computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
 
-These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating the relevant parameters, and should be viewed simply as projections based only on the available (imperfect) data.
+These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating the relevant parameters, and should be viewed simply as projections based only on the available (very) imperfect data.
 
 For each forecast only data from the past 3 weeks is used. The assumption here is that after three weeks people are no longer infectious so older data can be discarded.
 
@@ -28,9 +28,11 @@ The last plot shows the percentage of people that have already been infected rel
 
 The current (as of **April 14**) best 3 week data fir for Italy.
 
-![](italyloggraf.png)
+![](italyloggraf.png) 
 
 ![](italygraf.png)
+
+The large error estimates of late mean the numbers are deviating the current computed projection. This could indicate an actual change of dynamic of the epidemic or a change in the testing regime.
 
 ![](italydfgraf.png)
 
@@ -38,15 +40,21 @@ The current (as of **April 14**) best 3 week data fir for Italy.
 
 ### Austria
 
+The current (as of **April 14**) best 3 week data fit for Austria.
+
 ![](austrialoggraf.png)
 
 ![](austriagraf.png)
+
+After a quite long period of stable projections for Austria, the error estimates increased considerably in the first halp of April.
 
 ![](austriadfgraf.png)
 
 ![](austriaprogplot.png)
 
 ### Germany
+
+The current (as of **April 14**) best 3 week data fir for Germany.
 
 ![](germanloggraf.png)
 
