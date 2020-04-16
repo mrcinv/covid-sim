@@ -8,8 +8,6 @@ $$
 f(x)=\frac{ab}{(a−b)e^{−cx}+b}
 $$
 
-![](sloplot.png)
-
 Of particular interest is the parameter a since
 
 $$
