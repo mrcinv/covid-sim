@@ -6,7 +6,13 @@ The the theory used to obtain these estimates is explained under [Theory](theory
 
 ### Slovenia
 
+![](slologgraf.png)
+
 ![](slograf.png)
+
+![](slodfgraf.png)
+
+![](sloprogplot.png)
 
 ### Italy
 
