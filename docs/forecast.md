@@ -10,6 +10,8 @@ The the theory used to obtain these estimates is explained under [Theory](theory
 
 ![](slograf.png)
 
+![](slodfgraf.png)
+
 ![](sloprogplot.png)
 
 ### Italy
