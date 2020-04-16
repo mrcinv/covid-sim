@@ -1,12 +1,14 @@
 **The only numbers used in the computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
 
-For each forecast only data from the past 3 weeks is used. The assumption that after three weeks people are no longer spread the virus so older data can be discarded.
+These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating all the relevant parameters, and should be viewed simply as projections based only on the available (imperfect) data.
 
-The the theory used to obtain these estimates is explained under [Theory](theory.md).
+For each forecast only data from the past 3 weeks is used. The assumption here is that after three weeks people are no longer infectious so older data can be discarded.
+
+The basic the theory used to obtain these estimates is explained under [Theory](theory.md).
 
 ### Slovenia
 
-The following graph shows the current (as of **April 15**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
+The following graph shows the current (as of **April 15**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
 
 ![](slologgraf.png)
 
@@ -14,12 +16,13 @@ This plot shows the daily increases and estimates (together with rough error est
 
 ![](slograf.png)
 
-![](slodfgraf.png) ![](sloprogplot.png)
+The next graph shows the estimated days since the peak of the outbreak, computed on the given date. If the projection is stable, the estimated distance from the peak should progress by 1 for each day that passes.
 
-<p float="left">
-  <img src="slodfgraf.png" width="400" />
-  <img src="sloprogplot.png" width="400" /> 
-</p>
+![](slodfgraf.png) 
+
+The last plot shows the percentage of people that have already been infected relative to the total number of people that are projected to be infected. Again, the estimates are based on the numbers that were available at the date. 
+
+![](sloprogplot.png)
 
 ### Italy
 
