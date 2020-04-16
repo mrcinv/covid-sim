@@ -2,6 +2,8 @@
 
 For each forecast only data from the past 3 weeks is used. The assumption that after three weeks infected people no longer spread the virus so older data can be discarded.
 
+The the theory used to obtain these estimates is explained under [Theory](theory.md).
+
 ### Slovenia
 
 ![](slograf.png)
