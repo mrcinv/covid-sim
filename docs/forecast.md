@@ -6,7 +6,7 @@ These are therefore **not** scientific forecasts since we are not pretending we 
 
 For each forecast only data from the past 3 weeks is used. The assumption here is that after three weeks people are no longer infectious so older data can be discarded.
 
-The basic the theory used to obtain these estimates is explained under [Theory](theory.md).
+The basic the theory used to obtain these estimates is explained under [theory](theory.md).
 
 ### Slovenia
 
@@ -14,7 +14,7 @@ The following graph shows the current (as of **April 15**) best fit for total nu
 
 ![](slologgraf.png)
 
-This plot shows the daily increases and estimates (together with rough error estimates) and the current projected curve.
+This plot shows the daily increases and daily estimates estimates (together with rough expected error estimates) and the current projected curve.
 
 ![](slograf.png)
 
