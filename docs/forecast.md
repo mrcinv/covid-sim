@@ -48,7 +48,7 @@ The current (as of **April 14**) best 3-week data fit for Austria.
 
 ![](austriagraf.png)
 
-After a quite long period of stable projections for Austria, the error estimates increased considerably in the first half of April when the numbers began overshooting the projection by much more than expected. Consequently, the projection is unreliable for now.
+After a period of fairly stable projections for Austria, the error estimates increased considerably in the first half of April when the numbers began overshooting the projection by much more than expected. Consequently, the projection is unreliable for now.
 
 ![](austriadfgraf.png)
 
