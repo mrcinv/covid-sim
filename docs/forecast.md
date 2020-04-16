@@ -22,7 +22,7 @@ The next graph shows the estimated number of days since the peak of the outbreak
 
 ![](slodfgraf.png) 
 
-The last plot shows the percentage of people that have already been infected relative to the total number of people that are projected to be infected. Again, the estimates are based on the numbers that were available at the date. 
+The last plot shows the estimate of the percentage of people that have already been infected relative to the total number of people that are projected to be infected during the current outbreak. Again, the estimates are based on the numbers that were available at the date. 
 
 ![](sloprogplot.png)
 
