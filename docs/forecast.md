@@ -42,7 +42,7 @@ The large error estimates of late mean the new numbers are deviating from the cu
 
 ### Austria
 
-The current (as of **April 14**) best 3-week data fit for Austria.
+The current (as of **April 15**) best 3-week data fit for Austria.
 
 ![](austrialoggraf.png)
 
@@ -56,7 +56,7 @@ After a period of fairly stable projections for Austria, the error estimates inc
 
 ### Germany
 
-The current (as of **April 14**) best 3-week data fit for Germany.
+The current (as of **April 15**) best 3-week data fit for Germany.
 
 ![](germanloggraf.png)
 
