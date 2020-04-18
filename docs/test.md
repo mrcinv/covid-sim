@@ -7,3 +7,5 @@ A basic model for the cumulative number of cases in an epidemic is the logistic 
 $$
 f(x)=ab(a−b)e−cx+b
 $$
+
+{% include_relative data/testoutput.tex %}
