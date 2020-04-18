@@ -9,3 +9,4 @@ f(x)=ab(a−b)e−cx+b
 $$
 
 {% include_relative data/testoutput.tex %}
+{% include_relative data/testoutput.html %}
