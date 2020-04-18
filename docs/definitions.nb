@@ -1,0 +1,1264 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     46153,       1255]
+NotebookOptionsPosition[     45855,       1240]
+NotebookOutlinePosition[     46212,       1256]
+CellTagsIndexPosition[     46169,       1253]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"wmf", ",", "wjac", ",", "dwf", ",", "wf"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wmf", "[", 
+    RowBox[{"x_", ",", 
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"a", " ", 
+    RowBox[{"b", "/", 
+     RowBox[{"(", 
+      RowBox[{"b", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "-", "b"}], ")"}], 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "c"}], " ", "x"}], "]"}]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wjac", "[", 
+    RowBox[{"x_", ",", 
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}]}], "]"}], "=", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"wmf", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"a", ",", "b", ",", "c"}], "}"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dwf", "[", 
+   RowBox[{"p0_", ",", "time_", ",", "data_"}], "]"}], ":=", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"wjac", "[", 
+      RowBox[{"#", ",", "p0"}], "]"}], "&"}], ",", "time"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wf", "[", 
+   RowBox[{"p0_", ",", "time_", ",", "data_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"wmf", "[", 
+       RowBox[{"#", ",", "p0"}], "]"}], "&"}], ",", "time"}], "]"}], "-", 
+   "data"}]}]}], "Input",
+ CellChangeTimes->{{3.795922427324308*^9, 3.7959224295485277`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "showplots", ",", "forecast", ",", "dpeak", ",", "expeak", ",", "lfun", ",",
+    "dlfun", ",", "RMSQ"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"showplots", "[", 
+    RowBox[{"data_", ",", "p0_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"time", ",", "dplot", ",", "wmfplot"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"time", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dplot", "=", 
+       RowBox[{"ListPlot", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"wmfplot", "=", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"wmf", "[", 
+          RowBox[{"x", ",", "p0"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "0", ",", 
+           RowBox[{"2", 
+            RowBox[{"Length", "[", "data", "]"}]}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{"wmfplot", ",", "dplot"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"forecast", "[", 
+   RowBox[{"data_", ",", "p0_", ",", "dd_", ",", "t0_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"wmf", "[", 
+    RowBox[{
+     RowBox[{"t0", "+", "dd"}], ",", "p0"}], "]"}], "-", 
+   RowBox[{"wmf", "[", 
+    RowBox[{"t0", ",", "p0"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"forecast", "[", 
+   RowBox[{"data_", ",", "p0_", ",", "dd_"}], "]"}], ":=", 
+  RowBox[{"forecast", "[", 
+   RowBox[{"data", ",", "p0", ",", "dd", ",", 
+    RowBox[{"Length", "[", "data", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expeak", "[", 
+   RowBox[{"{", 
+    RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Log", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"a", "-", "b"}], ")"}], "/", "b"}], "]"}], "/", 
+   "c"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dpeak", "[", 
+   RowBox[{"data_", ",", "ip0_", ",", "time_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"expeak", "[", "ip0", "]"}], "-", 
+   RowBox[{"(", 
+    RowBox[{"time", "[", 
+     RowBox[{"[", 
+      RowBox[{"-", "1"}], "]"}], "]"}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dpeak", "[", 
+   RowBox[{"data_", ",", "ip0_"}], "]"}], ":=", 
+  RowBox[{"dpeak", "[", 
+   RowBox[{"data", ",", "ip0", ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lfun", "[", 
+    RowBox[{"x_", ",", "p0_"}], "]"}], ":=", 
+   RowBox[{"wmf", "[", 
+    RowBox[{"x", ",", "p0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dlfun", "[", 
+    RowBox[{"x_", ",", 
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}]}], "]"}], "=", 
+   RowBox[{"D", "[", 
+    RowBox[{
+     RowBox[{"lfun", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", "x"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RMSQ", "[", 
+   RowBox[{"data_", ",", "ip0_", ",", "time_"}], "]"}], ":=", 
+  RowBox[{"Sqrt", "[", 
+   RowBox[{"Mean", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"wmf", "[", 
+        RowBox[{"time", ",", "ip0"}], "]"}], "-", "data"}], ")"}], "^", "2"}],
+     "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RMSQ", "[", 
+    RowBox[{"data_", ",", "ip0_"}], "]"}], ":=", 
+   RowBox[{"RMSQ", "[", 
+    RowBox[{"data", ",", "ip0", ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{"i", ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "GNiteration", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GNiteration", "[", 
+   RowBox[{"data_", ",", "ip0_", ",", "time_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "k", ",", "tol", ",", "maxk", ",", "err", ",", "p0", ",", "np0", ",", 
+      "convnot", ",", "a", ",", "b", ",", "c"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"maxk", "=", "50"}], ";", 
+     RowBox[{"k", "=", "0"}], ";", 
+     RowBox[{"tol", "=", 
+      FractionBox["1", 
+       SuperscriptBox["10", "6"]]}], ";", 
+     RowBox[{"err", "=", "1"}], ";", 
+     RowBox[{"p0", "=", "ip0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"convnot", "=", "False"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"k", "<", "maxk"}], "&&", 
+        RowBox[{"err", ">", "tol"}], "&&", 
+        RowBox[{"(", 
+         RowBox[{"!", "convnot"}], ")"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"k", "=", 
+         RowBox[{"k", "+", "1"}]}], ";", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}], "=", 
+         RowBox[{"p0", "-", 
+          RowBox[{
+           RowBox[{"PseudoInverse", "[", 
+            RowBox[{"dwf", "[", 
+             RowBox[{"p0", ",", "time", ",", "data"}], "]"}], "]"}], ".", 
+           RowBox[{"wf", "[", 
+            RowBox[{"p0", ",", "time", ",", "data"}], "]"}]}]}]}], ";", 
+        RowBox[{"err", "=", 
+         RowBox[{"Norm", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}], "-", "p0"}], "]"}]}], 
+        ";", 
+        RowBox[{"p0", "=", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"convnot", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"a", "<", 
+            RowBox[{"-", 
+             RowBox[{"10", "^", "6"}]}]}], ")"}], "||", 
+          RowBox[{"(", 
+           RowBox[{"a", ">", 
+            RowBox[{"10", "^", "10"}]}], ")"}], "||", 
+          RowBox[{"(", 
+           RowBox[{"c", "<", 
+            RowBox[{"-", "100"}]}], ")"}], "||", 
+          RowBox[{"c", ">", "100"}]}]}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{"convnot", ",", 
+       RowBox[{"p0", "=", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1", ",", "1"}], "}"}]}]}], "]"}], ";", 
+     RowBox[{"{", 
+      RowBox[{"p0", ",", "k", ",", "err", ",", 
+       RowBox[{"Length", "[", "data", "]"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GNiteration", "[", 
+    RowBox[{"data_", ",", "ip0_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "time", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"time", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"GNiteration", "[", 
+       RowBox[{"data", ",", "ip0", ",", "time"}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "stepGNiteration", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"stepGNiteration", "[", 
+    RowBox[{"data_", ",", "ip0_", ",", "lag_", ",", "time_", ",", "step_"}], 
+    "]"}], ":=", 
+   RowBox[{"stepGNiteration", "[", 
+    RowBox[{"data", ",", "ip0", ",", "lag", ",", "time", ",", "step", ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"Length", "[", "time", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stepGNiteration", "[", 
+   RowBox[{
+   "data_", ",", "ip0_", ",", "lag_", ",", "time_", ",", "step_", ",", 
+    "timewindow_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "nres", ",", "nip0", ",", "l", ",", "abctab", ",", "windows", ",", 
+      "tempdata", ",", "temptime", ",", "lb", ",", "rb", ",", "notconv", ",", 
+      "firstind", ",", "lastind", ",", "outofbounds"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"nip0", "=", "ip0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"lb", ",", "rb"}], "}"}], "=", "timewindow"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"l", "=", 
+       RowBox[{"Length", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"firstind", ",", "lastind"}], "}"}], "=", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "l"}], "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"abctab", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"windows", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"nres", "=", 
+       RowBox[{"{", 
+        RowBox[{"nip0", ",", "0", ",", "0", ",", "0"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"notconv", "=", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"nres", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "===", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ")"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"outofbounds", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"lb", "+", 
+           RowBox[{"step", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "<", "firstind"}], ")"}], "||", 
+        
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"rb", "+", 
+           RowBox[{"step", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ">", "lastind"}], ")"}]}]}], 
+      ";"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"l", ">=", "lag"}], ")"}], "&&", 
+        RowBox[{"(", 
+         RowBox[{"!", "notconv"}], ")"}], "&&", 
+        RowBox[{"(", 
+         RowBox[{"!", "outofbounds"}], ")"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"l", "=", 
+         RowBox[{"rb", "-", "lb"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"tempdata", "=", 
+         RowBox[{"data", "\[LeftDoubleBracket]", 
+          RowBox[{"lb", ";;", "rb"}], "\[RightDoubleBracket]"}]}], ";", 
+        RowBox[{"temptime", "=", 
+         RowBox[{"time", "\[LeftDoubleBracket]", 
+          RowBox[{"lb", ";;", "rb"}], "\[RightDoubleBracket]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"nres", "=", 
+         RowBox[{"GNiteration", "[", 
+          RowBox[{"tempdata", ",", "nip0", ",", "temptime"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"nip0", "=", 
+         RowBox[{"nres", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"notconv", "=", 
+         RowBox[{"(", 
+          RowBox[{"nip0", "===", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ")"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{"nres", ",", 
+             RowBox[{"{", 
+              RowBox[{"lb", ",", "rb"}], "}"}]}], "}"}], "]"}], ";"}], "*)"}],
+         "\[IndentingNewLine]", 
+        RowBox[{"abctab", "=", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"abctab", ",", "nip0"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"windows", "=", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"windows", ",", 
+           RowBox[{"{", 
+            RowBox[{"lb", ",", "rb"}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"lb", ",", "rb"}], "}"}], "=", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"lb", ",", "rb"}], "}"}], "+", "step"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"outofbounds", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"lb", "<", "firstind"}], ")"}], "||", 
+          RowBox[{"(", 
+           RowBox[{"rb", ">", "lastind"}], ")"}]}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"nip0", ",", "abctab", ",", "windows"}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "errorplot", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"errorplot", "[", 
+   RowBox[{"data_", ",", "p0_", ",", "pf_", ",", "ef_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "err", ",", "dplot", ",", "len", ",", "wmfplot", ",", "upplot", ",", 
+      "downplot"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"err", "=", 
+      RowBox[{"RMSQ", "[", 
+       RowBox[{"data", ",", "p0"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dplot", "=", 
+      RowBox[{"ListPlot", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"wmfplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"wmf", "[", 
+         RowBox[{"x", ",", "p0"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0", ",", 
+          RowBox[{"pf", " ", "len"}]}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{
+            RowBox[{"wmf", "[", 
+             RowBox[{
+              RowBox[{"pf", " ", "len"}], ",", "p0"}], "]"}], "+", 
+            RowBox[{"ef", " ", "err", " ", 
+             RowBox[{"Sqrt", "[", 
+              RowBox[{
+               RowBox[{"pf", " ", "len"}], "-", "len"}], "]"}]}]}]}], "}"}]}],
+         ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"upplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"wmf", "[", 
+          RowBox[{"x", ",", "p0"}], "]"}], "+", 
+         RowBox[{"ef", " ", "err", " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"x", "-", "len"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "len", ",", 
+          RowBox[{"pf", " ", "len"}]}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Dashed"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"downplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"wmf", "[", 
+          RowBox[{"x", ",", "p0"}], "]"}], "-", 
+         RowBox[{"ef", " ", "err", " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"x", "-", "len"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "len", ",", 
+          RowBox[{"pf", " ", "len"}]}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Dashed"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", 
+      RowBox[{"wmfplot", ",", "upplot", ",", "dplot", ",", "downplot"}], 
+      "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "simdata", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"simdata", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"l_", ",", "r_"}], "}"}], ",", "err_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "peak", ",", "tl", ",", "tr", ",", "dlplot", ",", "lplot", ",", "tabdf", 
+      ",", "tabaccum", ",", "timetab"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"peak", "=", 
+      RowBox[{"expeak", "[", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tl", "=", 
+      RowBox[{"peak", "+", "l"}]}], ";", 
+     RowBox[{"tr", "=", 
+      RowBox[{"peak", "+", "r"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"{", 
+       RowBox[{"tl", ",", "tr"}], "}"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"tabdf", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"dlfun", "[", 
+           RowBox[{"i", ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "tl", ",", "tr"}], "}"}]}], "]"}]}], ";"}], 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"tabdf", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"lfun", "[", 
+          RowBox[{"i", ",", 
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "-", 
+         RowBox[{"lfun", "[", 
+          RowBox[{
+           RowBox[{"i", "-", "1"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "tl", ",", "tr"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"timetab", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "tl", ",", "tr"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tabaccum", "=", 
+      RowBox[{
+       RowBox[{"Accumulate", "[", "tabdf", "]"}], "+", 
+       RowBox[{"lfun", "[", 
+        RowBox[{
+         RowBox[{"tl", "-", "1"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"lplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lfun", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "tl", ",", "tr"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dlplot", "=", 
+      RowBox[{"ListPlot", "[", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"timetab", ",", "tabaccum"}], "}"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "lplot", ",", "dlplot", ",", "timetab", ",", "tabaccum", ",", "peak"}], 
+      "}"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"lsd", ",", "plusd", ",", "minsd"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lsd", "[", 
+    RowBox[{"{", 
+     RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"Log", "[", 
+       FractionBox[
+        RowBox[{"a", "-", "b"}], "b"], "]"}], "c"]}], "+", 
+    FractionBox[
+     RowBox[{"Log", "[", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"2", " ", 
+         SuperscriptBox["a", "2"], " ", "b"}], "-", 
+        RowBox[{"4", " ", "a", " ", 
+         SuperscriptBox["b", "2"]}], "+", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["b", "3"]}], "+", 
+        RowBox[{
+         SqrtBox["3"], " ", 
+         SqrtBox[
+          RowBox[{
+           RowBox[{
+            SuperscriptBox["a", "4"], " ", 
+            SuperscriptBox["b", "2"]}], "-", 
+           RowBox[{"4", " ", 
+            SuperscriptBox["a", "3"], " ", 
+            SuperscriptBox["b", "3"]}], "+", 
+           RowBox[{"6", " ", 
+            SuperscriptBox["a", "2"], " ", 
+            SuperscriptBox["b", "4"]}], "-", 
+           RowBox[{"4", " ", "a", " ", 
+            SuperscriptBox["b", "5"]}], "+", 
+           SuperscriptBox["b", "6"]}]]}]}], 
+       RowBox[{
+        RowBox[{"a", " ", 
+         SuperscriptBox["b", "2"]}], "-", 
+        SuperscriptBox["b", "3"]}]], "]"}], "c"]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"plusd", "[", 
+    RowBox[{"{", 
+     RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "]"}], "=", 
+   FractionBox[
+    RowBox[{"Log", "[", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"2", " ", 
+        SuperscriptBox["a", "2"], " ", "b"}], "-", 
+       RowBox[{"4", " ", "a", " ", 
+        SuperscriptBox["b", "2"]}], "+", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["b", "3"]}], "+", 
+       RowBox[{
+        SqrtBox["3"], " ", 
+        SqrtBox[
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["a", "4"], " ", 
+           SuperscriptBox["b", "2"]}], "-", 
+          RowBox[{"4", " ", 
+           SuperscriptBox["a", "3"], " ", 
+           SuperscriptBox["b", "3"]}], "+", 
+          RowBox[{"6", " ", 
+           SuperscriptBox["a", "2"], " ", 
+           SuperscriptBox["b", "4"]}], "-", 
+          RowBox[{"4", " ", "a", " ", 
+           SuperscriptBox["b", "5"]}], "+", 
+          SuperscriptBox["b", "6"]}]]}]}], 
+      RowBox[{
+       RowBox[{"a", " ", 
+        SuperscriptBox["b", "2"]}], "-", 
+       SuperscriptBox["b", "3"]}]], "]"}], "c"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minsd", "[", 
+    RowBox[{"{", 
+     RowBox[{"a_", ",", "b_", ",", "c_"}], "}"}], "]"}], "=", 
+   FractionBox[
+    RowBox[{"Log", "[", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"2", " ", 
+        SuperscriptBox["a", "2"], " ", "b"}], "-", 
+       RowBox[{"4", " ", "a", " ", 
+        SuperscriptBox["b", "2"]}], "+", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["b", "3"]}], "-", 
+       RowBox[{
+        SqrtBox["3"], " ", 
+        SqrtBox[
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["a", "4"], " ", 
+           SuperscriptBox["b", "2"]}], "-", 
+          RowBox[{"4", " ", 
+           SuperscriptBox["a", "3"], " ", 
+           SuperscriptBox["b", "3"]}], "+", 
+          RowBox[{"6", " ", 
+           SuperscriptBox["a", "2"], " ", 
+           SuperscriptBox["b", "4"]}], "-", 
+          RowBox[{"4", " ", "a", " ", 
+           SuperscriptBox["b", "5"]}], "+", 
+          SuperscriptBox["b", "6"]}]]}]}], 
+      RowBox[{
+       RowBox[{"a", " ", 
+        SuperscriptBox["b", "2"]}], "-", 
+       SuperscriptBox["b", "3"]}]], "]"}], "c"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "datastats", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datastats", "[", 
+   RowBox[{"data_", ",", "ip0_", ",", "tf_", ",", "sig_", ",", "time_"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "error", ",", "oneday", ",", "growth", ",", "dtop", ",", "perc", ",", 
+      "eplot"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"eplot", "=", 
+      RowBox[{"errorplot", "[", 
+       RowBox[{"data", ",", "time", ",", "ip0", ",", "tf", ",", "sig"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"oneday", "=", 
+      RowBox[{"forecast", "[", 
+       RowBox[{"data", ",", "ip0", ",", "1", ",", 
+        RowBox[{"time", "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"error", "=", 
+      RowBox[{"RMSQ", "[", 
+       RowBox[{"data", ",", "ip0", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dtop", "=", 
+      RowBox[{"dpeak", "[", 
+       RowBox[{"data", ",", "ip0", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"perc", "=", 
+      RowBox[{"100", " ", 
+       RowBox[{
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}], "/", 
+        RowBox[{"ip0", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"growth", "=", 
+      RowBox[{
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "1"}], "]"}], "]"}], "-", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "2"}], "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "eplot", ",", "oneday", ",", "error", ",", "growth", ",", "dtop", ",", 
+       " ", "perc"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "errorplot", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"errorplot", "[", 
+   RowBox[{"data_", ",", "time_", ",", "p0_", ",", "pf_", ",", "ef_"}], "]"}],
+   ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "err", ",", "dplot", ",", "len", ",", "wmfplot", ",", "upplot", ",", 
+      "downplot", ",", "t0", ",", "tk"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"err", "=", 
+      RowBox[{"RMSQ", "[", 
+       RowBox[{"data", ",", "p0", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"t0", "=", 
+      RowBox[{
+       RowBox[{"time", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "-", "1"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tk", "=", 
+      RowBox[{"time", "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dplot", "=", 
+      RowBox[{"ListPlot", "[", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"time", ",", "data"}], "}"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"wmfplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"wmf", "[", 
+         RowBox[{"x", ",", "p0"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "t0", ",", 
+          RowBox[{"t0", "+", 
+           RowBox[{"pf", " ", "len"}]}]}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{
+            RowBox[{"wmf", "[", 
+             RowBox[{
+              RowBox[{"t0", "+", 
+               RowBox[{"pf", " ", "len"}]}], ",", "p0"}], "]"}], "+", 
+            RowBox[{"ef", " ", "err", " ", 
+             RowBox[{"Sqrt", "[", 
+              RowBox[{"pf", " ", "len"}], "]"}]}]}]}], "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"upplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"wmf", "[", 
+          RowBox[{"x", ",", "p0"}], "]"}], "+", 
+         RowBox[{"ef", " ", "err", " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"x", "-", "tk"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "tk", ",", 
+          RowBox[{"tk", "+", 
+           RowBox[{"pf", " ", "len"}]}]}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Dashed"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"downplot", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"wmf", "[", 
+          RowBox[{"x", ",", "p0"}], "]"}], "-", 
+         RowBox[{"ef", " ", "err", " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"x", "-", "tk"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "tk", ",", 
+          RowBox[{"tk", "+", 
+           RowBox[{"pf", " ", "len"}]}]}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Dashed"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", 
+      RowBox[{"wmfplot", ",", "upplot", ",", "dplot", ",", "downplot"}], 
+      "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "estimates", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"estimates", "[", 
+   RowBox[{"tmpdata_", ",", "tp0_", ",", "lag_", ",", "time_"}], "]"}], ":=", 
+  
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "tmp20", ",", "tgl", ",", "backres", ",", "forwp0", ",", "forres", ",", 
+      "abctab", ",", "winds"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"backres", ",", "abctab", ",", "winds"}], "}"}], "=", 
+      RowBox[{"stepGNiteration", "[", 
+       RowBox[{"tmpdata", ",", "tp0", ",", "lag", ",", "time", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"-", "1"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", 
+          RowBox[{"Length", "[", "time", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "backres", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"forres", ",", "abctab", ",", "winds"}], "}"}], "=", 
+      RowBox[{"stepGNiteration", "[", 
+       RowBox[{"tmpdata", ",", "backres", ",", 
+        RowBox[{"lag", "-", "1"}], ",", "time", ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "lag"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "forres", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"abctab", ",", "winds"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"datastatsnoplot", "[", 
+   RowBox[{"data_", ",", "ip0_", ",", "time_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "error", ",", "oneday", ",", "growth", ",", "dtop", ",", "perc"}], "}"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"oneday", "=", 
+      RowBox[{"forecast", "[", 
+       RowBox[{"data", ",", "ip0", ",", "1", ",", 
+        RowBox[{"time", "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"error", "=", 
+      RowBox[{"RMSQ", "[", 
+       RowBox[{"data", ",", "ip0", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dtop", "=", 
+      RowBox[{"dpeak", "[", 
+       RowBox[{"data", ",", "ip0", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"perc", "=", 
+      RowBox[{"100", " ", 
+       RowBox[{
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"-", "1"}], "]"}], "]"}], "/", 
+        RowBox[{"ip0", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"growth", "=", 
+      RowBox[{
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "1"}], "]"}], "]"}], "-", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "2"}], "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "oneday", ",", "error", ",", "growth", ",", "dtop", ",", " ", "perc", 
+       ",", 
+       RowBox[{"ip0", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"time", "[", 
+        RowBox[{"[", 
+         RowBox[{"-", "1"}], "]"}], "]"}]}], "}"}]}]}], "\[IndentingNewLine]",
+    "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"generatestats", "[", 
+   RowBox[{"data_", ",", "tp0_", ",", "lag_", ",", "time_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tabs", ",", "twindows", ",", "allstats"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"tabs", ",", "twindows"}], "}"}], "=", 
+      RowBox[{"estimates", "[", 
+       RowBox[{"data", ",", "tp0", ",", "lag", ",", "time"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"allstats", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"datastatsnoplot", "[", 
+          RowBox[{
+           RowBox[{"data", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ";;", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ",", 
+           RowBox[{"time", "[", 
+            RowBox[{"[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ";;", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}]}], "]"}], "&"}],
+         ",", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"tabs", ",", "twindows"}], "}"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"allstats", "=", 
+        RowBox[{"PrependTo", "[", 
+         RowBox[{"allstats", ",", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<oneday\>\"", ",", "\"\<error\>\"", ",", "\"\<actual\>\"", 
+            ",", "\"\<dtop\>\"", ",", "\"\<perc\>\""}], "}"}]}], "]"}]}], 
+       ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"tabs", "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "1"}], "]"}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"allstats", "=", 
+      RowBox[{"Transpose", "[", "allstats", "]"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "somegraphs", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"somegraphs", "[", 
+   RowBox[{
+   "stp0_", ",", "fip0_", ",", "ttime_", ",", "tdata_", ",", "startdate_", 
+    ",", "lag_", ",", "projtime_", ",", "drop_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "dailyincrease", ",", "stats", ",", "oneplot", ",", "erplot", ",", 
+      "projtimeinterval", ",", "dlplot", ",", "graf", ",", "logfunplot", ",", 
+      "cumdinplot", ",", "loggraf", ",", "dfpplot", ",", "progress", ",", 
+      "progplot"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dailyincrease", "=", 
+      RowBox[{
+       RowBox[{"tdata", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ";;", 
+          RowBox[{"-", "1"}]}], "]"}], "]"}], "-", 
+       RowBox[{"tdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", 
+          RowBox[{"-", "2"}]}], "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"stats", "=", 
+      RowBox[{"generatestats", "[", 
+       RowBox[{"tdata", ",", "stp0", ",", "21", ",", "ttime"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"oneplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{"dailyincrease", ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "1"}], "]"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<daily increase\>\"", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"erplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"stats", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"stats", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "+", 
+           RowBox[{"stats", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"stats", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "-", 
+           RowBox[{"stats", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "Red", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Orange", ",", "Dashed"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Orange", ",", "Dashed"}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<daily increase estimate (at the time)\>\"", ",", 
+           "\"\<estimate+expected error\>\"", ",", 
+           "\"\<estimate-expected error\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"projtimeinterval", "=", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"Append", "[", 
+        RowBox[{"ttime", ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"t", ",", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "1"}], ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "projtime", "+", 
+              "1"}]}], "}"}]}], "]"}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dlplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dlfun", "[", 
+            RowBox[{"#", ",", "fip0"}], "]"}], "&"}], ",", 
+          "projtimeinterval"}], "]"}], ",", "startdate", ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<best fit projection for last 3 weeks of data\>\"", "}"}]}],
+         ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", "Black", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"graf", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{"dlplot", ",", "oneplot", ",", "erplot", ",", 
+        RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"projtimeinterval", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"projtimeinterval", ",", "drop"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"logfunplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "fip0"}], "]"}], "&"}], ",", 
+          "projtimeinterval"}], "]"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "drop"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<best fit projection for last 3 weeks of data\>\"", "}"}]}],
+         ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"cumdinplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{"tdata", ",", "startdate", ",", 
+        RowBox[{"Joined", "\[Rule]", "False"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<total confirmed cases\>\"", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}]}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"loggraf", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{"logfunplot", ",", "cumdinplot"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dfpplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"-", 
+          RowBox[{"stats", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<estimated days from peak (at the time)\>\"", "}"}]}], ",", 
+        
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"PointSize", "[", "0.010", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"progress", "=", 
+      RowBox[{"stats", "[", 
+       RowBox[{"[", "5", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"progplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", "progress", "}"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<estimated progress (at the time)\>\"", "}"}]}], 
+        ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"PointSize", "[", "0.010", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"30", ",", "100"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"graf", ",", "loggraf", ",", "dfpplot", ",", "progplot"}], 
+      "}"}]}]}], "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.795524361302558*^9, 3.7955243617659187`*^9}, {
+   3.795580219414031*^9, 3.795580248958391*^9}, {3.795661074153103*^9, 
+   3.795661074438863*^9}, {3.7956707847568274`*^9, 3.795670785276594*^9}, {
+   3.795670857109371*^9, 3.79567085786701*^9}, {3.795670907188085*^9, 
+   3.7956709075091677`*^9}, {3.7956710457587957`*^9, 3.795671055433222*^9}, {
+   3.795671115551716*^9, 3.795671169473908*^9}, {3.7956810628792267`*^9, 
+   3.795681063106635*^9}, {3.795696032183914*^9, 3.79569604657055*^9}, {
+   3.7956964714678717`*^9, 3.795696471707281*^9}, {3.795696503793777*^9, 
+   3.795696507831696*^9}, 3.795745269837139*^9, 3.795762232709909*^9, 
+   3.795763366150485*^9, {3.79576384000795*^9, 3.795763842052596*^9}, {
+   3.795763892372123*^9, 3.795763893617606*^9}, {3.7957639259642477`*^9, 
+   3.795763942580172*^9}, {3.795763986091942*^9, 3.7957639872395277`*^9}, {
+   3.7957759221014223`*^9, 3.795775922768532*^9}, {3.7957760907301207`*^9, 
+   3.795776100122858*^9}, {3.795776134928825*^9, 3.795776139271668*^9}, {
+   3.795776195082571*^9, 3.795776226701426*^9}, {3.795776576398604*^9, 
+   3.795776615208219*^9}, {3.7957767669055567`*^9, 3.7957767900146914`*^9}, {
+   3.7957768369852657`*^9, 3.79577687478398*^9}, {3.795776913697855*^9, 
+   3.795776923949876*^9}, {3.795777004949133*^9, 3.79577704855686*^9}, {
+   3.79577723818591*^9, 3.7957772923754253`*^9}, 3.79577874868543*^9, {
+   3.7957799227054*^9, 3.795779937263454*^9}, {3.795780426595375*^9, 
+   3.795780431081386*^9}, {3.795788657566733*^9, 3.795788661914196*^9}, 
+   3.795919840139208*^9, 3.795919921450068*^9, {3.795919977290882*^9, 
+   3.795920052981987*^9}, {3.795920105785375*^9, 3.795920106304001*^9}, {
+   3.795920191721085*^9, 3.7959201928088818`*^9}, {3.795920521971746*^9, 
+   3.795920522422805*^9}, {3.795920661428006*^9, 3.79592066500819*^9}, {
+   3.7959207064109173`*^9, 3.7959207112485113`*^9}, {3.7959207837322197`*^9, 
+   3.79592079552205*^9}, 3.795921449969446*^9, 3.795924079546891*^9, {
+   3.7959249221405993`*^9, 3.7959249411039124`*^9}, {3.795929258386469*^9, 
+   3.795929274523964*^9}, 3.7959298022135983`*^9, 3.795931431820438*^9, 
+   3.7959319464668713`*^9, {3.795955196619076*^9, 3.795955196923862*^9}, {
+   3.795955239275797*^9, 3.795955305226947*^9}, {3.7959556079062567`*^9, 
+   3.7959556094664783`*^9}, {3.7959557923657207`*^9, 3.795955793224494*^9}, 
+   3.796057816174506*^9, {3.79605785065757*^9, 3.796057853732345*^9}}]
+},
+WindowSize->{808, 570},
+WindowMargins->{{20, Automatic}, {Automatic, 44}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1685, 56, 97, "Input"],
+Cell[2246, 78, 43605, 1160, 3352, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
