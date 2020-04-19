@@ -16,52 +16,52 @@ The following graph shows the current (as of **April 17**) best fit for total nu
 
 This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve.
 
-![](slograf.png)
+![](plotdump/slograf.png)
 
 The next graph shows the estimated number of days since the peak of the outbreak, computed on the given date. If the projection is stable, the estimated distance from the peak should progress by 1 for each day that passes.
 
-![](slodfgraf.png) 
+![](plotdump/slodfgraf.png) 
 
 The last plot shows the estimate of the percentage of people that have already been infected relative to the total number of people that are projected to be infected during the current outbreak. Again, the estimates are based on the numbers that were available at the date. 
 
-![](sloprogplot.png)
+![](plotdump/sloprogplot.png)
 
 ### Italy
 
 The current (as of **April 16**) best 3-week data fit for Italy.
 
-![](italyloggraf.png) 
+![](plotdump/italyloggraf.png) 
 
-![](italygraf.png)
+![](plotdump/italygraf.png)
 
 The large error estimates of late mean the new numbers are deviating from the current computed projection. This could indicate an actual change of dynamic of the epidemic or a change in the testing regime.
 
-![](italydfgraf.png)
+![](plotdump/italydfgraf.png)
 
-![](italyprogplot.png)
+![](plotdump/italyprogplot.png)
 
 ### Austria
 
 The current (as of **April 16**) best 3-week data fit for Austria.
 
-![](austrialoggraf.png)
+![](plotdump/austrialoggraf.png)
 
-![](austriagraf.png)
+![](plotdump/austriagraf.png)
 
 After a period of fairly stable projections for Austria, the error estimates increased considerably in the second week of April when the numbers began overshooting the projection by much more than expected. Consequently, the projection is unreliable for now.
 
-![](austriadfgraf.png)
+![](plotdump/austriadfgraf.png)
 
-![](austriaprogplot.png)
+![](plotdump/austriaprogplot.png)
 
 ### Germany
 
 The current (as of **April 16**) best 3-week data fit for Germany.
 
-![](germanloggraf.png)
+![](plotdump/germanloggraf.png)
 
-![](germangraf.png)
+![](plotdump/germangraf.png)
 
-![](germandfgraf.png)
+![](plotdump/germandfgraf.png)
 
-![](germanprogplot.png)
+![](plotdump/germanprogplot.png)
