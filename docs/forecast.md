@@ -10,7 +10,7 @@ The basic the theory used to obtain these estimates is explained under [theory](
 
 ### Slovenia
 
-The following graph shows the current (as of **April 18**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
+The following graph shows the current (as of **{% include_relative plotdump/slodate.txt %}**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
 
 ![](plotdump/slologgraf.png)
 
@@ -28,7 +28,7 @@ The last plot shows the estimate of the percentage of people that have already b
 
 ### Italy
 
-The current (as of **April 17**) best 3-week data fit for Italy.
+The current (as of **{% include_relative plotdump/italydate.txt %}**) best 3-week data fit for Italy.
 
 ![](plotdump/italyloggraf.png) 
 
