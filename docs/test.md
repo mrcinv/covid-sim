@@ -11,3 +11,5 @@ $$
 {% include_relative data/testoutput.tex %}
 
 {% include_relative data/testoutput.html %}
+
+{% include_relative plotdump/slodate.txt %}
