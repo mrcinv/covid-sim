@@ -1,4 +1,4 @@
-## Coronavirus forecasts
+## Coronavirus projections
 
 **The only numbers used in the following computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
 
