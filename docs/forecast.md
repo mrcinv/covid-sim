@@ -66,13 +66,14 @@ The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-we
 
 ![](plotdump/germandfgraf.png)
 
-As in the case for Italy, the best fit estimate for the total number of cases has risen through time, but the bootstrap estimate has been fairly consistent.
+As in the case for Italy, the best fit estimate for the total number of cases has risen through time, but the bootstrap estimate has been reasonably consistent.
 
 ![](plotdump/germanfinalplot.png)
 
 ### USA
 
-The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-week data fit for America.
+The current (as of **{% include_relative plotdump/usadate.txt %}**) best 3-week data fit for America.
+The best fit and bootstrap projections differ significantly and both estimates for the USA are still rising quickly (see below). This would suggest an unstable situation. It is not even certain that the peak is actually over as we can expect the estimates to continue rise. The large error estimates also imply that obtaining reliable estimates for the final outcome using just available data is difficult at the moment.
 
 ![](plotdump/usaloggraf.png)
 
