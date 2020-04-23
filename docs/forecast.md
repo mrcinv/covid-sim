@@ -2,11 +2,11 @@
 
 **The only numbers used in the following computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
 
-These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating the relevant parameters, and should be viewed simply as projections based only on the available (very) imperfect data.
+These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating all the relevant parameters, and should be viewed simply as projections based only on the available (very) imperfect data.
 
 For each forecast only data from the past 3 weeks is used. The assumption here is that after three weeks people are no longer infectious so older data can be discarded.
 
-The basic the theory used to obtain these estimates is explained under [theory](theory.md).
+The basic the theory used to obtain these estimates is explained under [theory](theory.md). 
 
 ### Slovenia
 
