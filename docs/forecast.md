@@ -80,6 +80,6 @@ The current (as of **{% include_relative plotdump/usadate.txt %}**) best 3-week 
 
 ![](plotdump/usadfgraf.png)
 
-Both estimates for the USA are still rising quickly. This would suggest a very unstable situation. It is not even certain that the peak is actually over as we can expect the estimates to continue rise.
+Both estimates for the USA are still rising quickly. This would suggest an unstable situation. It is not even certain that the peak is actually over as we can expect the estimates to continue rise.
 
 ![](plotdump/usafinalplot.png)
