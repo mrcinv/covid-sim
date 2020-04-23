@@ -14,7 +14,7 @@ The following graph shows the current (as of **{% include_relative plotdump/slod
 
 ![](plotdump/slologgraf.png)
 
-This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve.
+This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially accounts for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection.
 
 ![](plotdump/slograf.png)
 
@@ -22,9 +22,9 @@ The next graph shows the estimated number of days since the peak of the outbreak
 
 ![](plotdump/slodfgraf.png) 
 
-The last plot shows the estimate of the percentage of people that have already been infected relative to the total number of people that are projected to be infected during the current outbreak. Again, the estimates are based on the numbers that were available at the date. 
+The last plot shows how the estimates for the total number of cases that will occur during the outbreak have changed with time. As we see, for Slovenia both projections have not changed much for a while. 
 
-![](plotdump/sloprogplot.png)
+![](plotdump/slofinalplot.png)
 
 ### Italy
 
@@ -38,7 +38,9 @@ The large error estimates of late mean the new numbers are deviating from the cu
 
 ![](plotdump/italydfgraf.png)
 
-![](plotdump/italyprogplot.png)
+Both estimates for the final number of cases for Italy have consistentently risen throughout the epidemic.
+
+![](plotdump/italyfinalplot.png)
 
 ### Austria
 
@@ -52,7 +54,7 @@ After a period of fairly stable projections for Austria, the error estimates inc
 
 ![](plotdump/austriadfgraf.png)
 
-![](plotdump/austriaprogplot.png)
+![](plotdump/austriafinalplot.png)
 
 ### Germany
 
@@ -64,4 +66,18 @@ The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-we
 
 ![](plotdump/germandfgraf.png)
 
-![](plotdump/germanprogplot.png)
+As in the case for Italy, the best fit estimate for the total number of cases has risen through time, but the bootstrap estimate has been fairly consistent.
+
+![](plotdump/germanfinalplot.png)
+
+### USA
+
+The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-week data fit for America.
+
+![](plotdump/usaloggraf.png)
+
+![](plotdump/usagraf.png)
+
+![](plotdump/usadfgraf.png)
+
+![](plotdump/usafinalplot.png)
