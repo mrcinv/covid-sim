@@ -72,12 +72,14 @@ As in the case for Italy, the best fit estimate for the total number of cases ha
 
 ### USA
 
-The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-week data fit for America.
+The current (as of **{% include_relative plotdump/usadate.txt %}**) best 3-week data fit for America.
 
 ![](plotdump/usaloggraf.png)
 
 ![](plotdump/usagraf.png)
 
 ![](plotdump/usadfgraf.png)
+
+Both estimates for the USA are still rising quickly. This would suggest a very unstable situation. It is not even certain that the peak is actually over as we can expect the estimates to continue rise.
 
 ![](plotdump/usafinalplot.png)
