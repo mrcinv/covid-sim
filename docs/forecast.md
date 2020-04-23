@@ -66,7 +66,7 @@ The current (as of **{% include_relative plotdump/germandate.txt %}**) best 3-we
 
 ![](plotdump/germandfgraf.png)
 
-As in the case for Italy, the best fit estimate for the total number of cases has risen through time, but the bootstrap estimate has been fairly consistent.
+As in the case for Italy, the best fit estimate for the total number of cases has risen through time, but the bootstrap estimate has been reasonably consistent.
 
 ![](plotdump/germanfinalplot.png)
 
