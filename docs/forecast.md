@@ -14,7 +14,7 @@ The following graph shows the current (as of **{% include_relative plotdump/slod
 
 ![](plotdump/slologgraf.png)
 
-This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially accounts for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection.
+This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially accounts for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection. This means that the best fit has not been underestimating the number of daily cases by much.
 
 ![](plotdump/slograf.png)
 
@@ -34,7 +34,7 @@ The current (as of **{% include_relative plotdump/italydate.txt %}**) best 3-wee
 
 ![](plotdump/italygraf.png)
 
-The large error estimates of late mean the new numbers are deviating from the current computed projection. This could indicate an actual change of dynamic of the epidemic or a change in the testing regime.
+The large error estimates mean the new numbers are deviating from the current computed projection. This could indicate an actual change of dynamic of the epidemic or a change in the testing regime.
 
 ![](plotdump/italydfgraf.png)
 
