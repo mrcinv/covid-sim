@@ -1,0 +1,83 @@
+<?xml version='1.0'?>
+<!DOCTYPE Expression SYSTEM 'http://www.wolfram.com/XML/notebookml1.dtd'>
+<Expression xmlns:mathematica='http://www.wolfram.com/XML/'
+    xmlns='http://www.wolfram.com/XML/'>
+ <Function>
+  <Symbol>List</Symbol>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Canada</String>
+   <Number>200</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>52180.39484847384</Number>
+    <Number Precision=''>1005.9304582251706</Number>
+    <Number Precision=''>0.1324225337960489</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>21</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Australia</String>
+   <Number>100</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>6540.8364412808105</Number>
+    <Number Precision=''>85.77223261633138</Number>
+    <Number Precision=''>0.2345420078562459</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>21</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>New Zealand</String>
+   <Number>5</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>1441.2482649030032</Number>
+    <Number Precision=''>14.971640930135235</Number>
+    <Number Precision=''>0.23959274221723975</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>21</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Croatia</String>
+   <Number>10</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>1985.7723787465545</Number>
+    <Number Precision=''>21.596481176857367</Number>
+    <Number Precision=''>0.1589401951808019</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>21</Number>
+   <Number>10</Number>
+   <Number>5</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Czechia</String>
+   <Number>10</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>7096.988271837173</Number>
+    <Number Precision=''>68.14371590582019</Number>
+    <Number Precision=''>0.16461693785708748</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>21</Number>
+   <Number>10</Number>
+   <Number>5</Number>
+  </Function>
+ </Function>
+</Expression>
