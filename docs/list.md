@@ -10,3 +10,4 @@ A list of countries for which the projections are available:
 * [Czech Republic](countries/czechia.md)
 * [Sweden](countries/sweden.md)
 * [Greece](countries/greece.md)
+* [Japan](countries/japan.md)
