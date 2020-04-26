@@ -1,0 +1,5 @@
+Plots for the Czech Republic (last date **{% include_relative plotdump/Czechiadate.txt %}**))
+![](plotdump/Czechiagraf.png)
+![](plotdump/Czechialoggraf.png)
+![](plotdump/Czechiadfgraf.png)
+![](plotdump/Czechiafinalplot.png)
