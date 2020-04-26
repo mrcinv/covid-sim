@@ -1,10 +1,10 @@
 ## Coronavirus projections
 
-Here is graph of approximated curves for the total number of daily reported cases of coronavirus cases (per 100k) for selected countries and there projections:
+Here is graph of approximated curves for the total number of daily reported cases of coronavirus cases (per 100k of population) for selected countries and there projections:
 
 ![](plotdump/scprojplots.png)
 
-More details for each of these countries can be found below. Projections for other countries can be found under [list of countries](list.md).
+More details for each of these countries can be found below. Projections for some other countries can be found under [list of countries](list.md). 
 
 **The only numbers used in the following computations are daily reported cases (and for the case of Slovenia also the daily number of tests performed).** No other information of any kind, however relevant, is used. No estimates, assumptions, simulations, comparisons with other outbreaks etc for any epidemiological parameters are accounted for, let alone the changing effects of countermeasures or other dynamic factors.
 
@@ -20,7 +20,7 @@ The following graph shows the current (as of **{% include_relative plotdump/slod
 
 ![](plotdump/slologgraf.png)
 
-This plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection. This means that on average the best fit has been a been a good estimate the number of daily cases, at least for the time being.
+This next plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection. This means that on average the best fit has been a been a good estimate the number of daily cases, at least for now.
 
 ![](plotdump/slograf.png)
 
@@ -44,7 +44,7 @@ The large error estimates mean the new numbers are deviating from the current co
 
 ![](plotdump/italydfgraf.png)
 
-Both estimates for the final number of cases for Italy have consistentently risen throughout the epidemic but the bias in the best fit projection has recently begun to fall.
+Both estimates for the final number of cases for Italy have consistentently risen throughout the epidemic but the bias in the best fit projection has recently begun to fall and the two estimates seem to be converging.
 
 ![](plotdump/italyfinalplot.png)
 
