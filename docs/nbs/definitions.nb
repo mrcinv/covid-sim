@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     75754,       1940]
-NotebookOptionsPosition[     75457,       1925]
-NotebookOutlinePosition[     75813,       1941]
-CellTagsIndexPosition[     75770,       1938]
+NotebookDataLength[     79236,       2017]
+NotebookOptionsPosition[     78939,       2002]
+NotebookOutlinePosition[     79295,       2018]
+CellTagsIndexPosition[     79252,       2015]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -412,14 +412,12 @@ Cell[BoxData[{
            RowBox[{"{", 
             RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ")"}]}], ";", 
         "\[IndentingNewLine]", 
-        RowBox[{"(*", 
-         RowBox[{
-          RowBox[{"Print", "[", 
+        RowBox[{"Print", "[", 
+         RowBox[{"{", 
+          RowBox[{"nres", ",", 
            RowBox[{"{", 
-            RowBox[{"nres", ",", 
-             RowBox[{"{", 
-              RowBox[{"lb", ",", "rb"}], "}"}]}], "}"}], "]"}], ";"}], "*)"}],
-         "\[IndentingNewLine]", 
+            RowBox[{"lb", ",", "rb"}], "}"}]}], "}"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
         RowBox[{"abctab", "=", 
          RowBox[{"AppendTo", "[", 
           RowBox[{"abctab", ",", "nip0"}], "]"}]}], ";", 
@@ -1051,7 +1049,10 @@ Cell[BoxData[{
      RowBox[{"allstats", "=", 
       RowBox[{"Transpose", "[", "allstats", "]"}]}]}]}], 
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"Clear", "[", "somegraphs", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", 
+  RowBox[{"somegraphs", ",", "grafprojtime"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"grafprojtime", "=", "5"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"somegraphs", "[", 
    RowBox[{
@@ -1071,7 +1072,9 @@ Cell[BoxData[{
       "boottimewinds", ",", "bootdatelists", ",", "tabctab", ",", "twinds", 
       ",", "dlbootplot", ",", "bootexpeakdate", ",", "bootabc", ",", 
       "bootlogfunplot", ",", "bootplot", ",", "bestfitplot", ",", 
-      "pastfinalplot"}], "}"}], ",", "\[IndentingNewLine]", 
+      "pastfinalplot", ",", "popbootplot", ",", "curdatelist", ",", 
+      "lfunvals", ",", "grafptimeinterval"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"dailyincrease", "=", 
       RowBox[{
@@ -1247,6 +1250,26 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{"Purple", ",", "Dashed"}], "}"}]}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"popbootplot", "=", 
+        RowBox[{"DateListPlot", "[", 
+         RowBox[{
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"10", "^", "5"}], 
+              RowBox[{
+               RowBox[{"lfun", "[", 
+                RowBox[{"#", ",", "bootabc"}], "]"}], "/", "population"}]}], 
+             "&"}], ",", "ttime"}], "]"}], ",", "startdate", ",", 
+          RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"bootfwplots", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"bootfwplots", ",", "popbootplot"}], "]"}]}], ";"}], "*)"}], 
      "\[IndentingNewLine]", 
      RowBox[{"ticks", "=", 
       RowBox[{"Table", "[", 
@@ -1482,6 +1505,7 @@ Cell[BoxData[{
          RowBox[{
          "{", "\"\<bootstrap estimates for final number of cases (at the \
 time)\>\"", "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"bestfitplot", "=", 
@@ -1499,6 +1523,7 @@ time)\>\"", "}"}]}], ",",
          RowBox[{
          "{", "\"\<best fit estimates for final number of cases (at the time)\
 \>\"", "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"pastfinalplot", "=", 
@@ -1519,10 +1544,47 @@ time)\>\"", "}"}]}], ",",
               RowBox[{"Transpose", "[", "bootabctab", "]"}], "[", 
               RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
        ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"grafptimeinterval", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ttime", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "-", "1", "+", "i"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "ttime", "]"}], "+", "grafprojtime"}]}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"curdatelist", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DatePlus", "[", 
+          RowBox[{"startdate", ",", "#"}], "]"}], "&"}], ",", 
+        "grafptimeinterval"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "ttime", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"lfunvals", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"10", "^", "5"}], 
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "bootabc"}], "]"}], "/", "population"}]}], 
+         "&"}], ",", "grafptimeinterval"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"countrybootabcs", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"countrybootabcs", ",", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"curdatelist", ",", "lfunvals"}], "}"}], "]"}]}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
      RowBox[{"{", 
       RowBox[{
       "graf", ",", "loggraf", ",", "dfpplot", ",", "progplot", ",", 
-       "pastfinalplot"}], "}"}]}]}], "\[IndentingNewLine]", 
+       "pastfinalplot", ",", "bootabc"}], "}"}]}]}], "\[IndentingNewLine]", 
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"reldatetostring", "[", 
@@ -1921,7 +1983,22 @@ time)\>\"", "}"}]}], ",",
    3.796785516145566*^9, 3.796785557274433*^9}, {3.7967856536864023`*^9, 
    3.796785671117674*^9}, {3.796785728588891*^9, 3.7967857761143847`*^9}, {
    3.7967858509997396`*^9, 3.796785854353629*^9}, {3.796785909406337*^9, 
-   3.796785912267631*^9}, {3.79681227173059*^9, 3.7968122825845823`*^9}}]
+   3.796785912267631*^9}, {3.79681227173059*^9, 3.7968122825845823`*^9}, {
+   3.796812612169373*^9, 3.7968127229617434`*^9}, 3.796812762432663*^9, {
+   3.7968128008214397`*^9, 3.7968128194487057`*^9}, {3.796812918289238*^9, 
+   3.7968129192830763`*^9}, {3.796813023933566*^9, 3.796813031036366*^9}, {
+   3.796813180577916*^9, 3.7968131819049397`*^9}, {3.796813459370504*^9, 
+   3.796813462996036*^9}, {3.7968141680425167`*^9, 3.796814215430429*^9}, {
+   3.796820549286993*^9, 3.7968206547242937`*^9}, {3.796820836196953*^9, 
+   3.796820844543833*^9}, {3.7968212172214403`*^9, 3.796821218693651*^9}, 
+   3.796833658953548*^9, {3.796870378841695*^9, 3.796870396820088*^9}, {
+   3.79687043685292*^9, 3.796870526327259*^9}, {3.796870691150457*^9, 
+   3.796870750686104*^9}, {3.796871148046489*^9, 3.796871148183957*^9}, {
+   3.796872539277424*^9, 3.796872546906768*^9}, 3.796875868596677*^9, 
+   3.796875901255398*^9, {3.796877541845615*^9, 3.796877541975975*^9}, {
+   3.796879702469882*^9, 3.796879704983697*^9}, {3.7968797364856873`*^9, 
+   3.796879741385458*^9}, 3.796880147775312*^9, {3.7968895427000637`*^9, 
+   3.796889546858634*^9}}]
 },
 WindowSize->{610, 577},
 WindowMargins->{{0, Automatic}, {Automatic, 29}},
@@ -1941,7 +2018,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 1685, 56, 97, "Input"],
-Cell[2246, 78, 73207, 1845, 6514, "Input"]
+Cell[2246, 78, 76689, 1922, 6752, "Input"]
 }
 ]
 *)
