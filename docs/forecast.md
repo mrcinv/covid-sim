@@ -34,7 +34,7 @@ The last plot shows how the estimates for the total number of cases that will oc
 
 ### Italy
 
-The current (as of **{% include_relative plotdump/italydate.txt %}**) best 3-week data fit for Italy.
+The current (as of **{% include_relative plotdump/italydate.txt %}**) fits for Italy.
 
 ![](plotdump/italyloggraf.png) 
 
@@ -50,7 +50,7 @@ Both estimates for the final number of cases for Italy have consistentently rise
 
 ### Austria
 
-The current (as of **{% include_relative plotdump/austriadate.txt %}**) best 3-week data fit for Austria.
+The current (as of **{% include_relative plotdump/austriadate.txt %}**) best fits for Austria.
 
 ![](plotdump/austrialoggraf.png)
 
@@ -78,10 +78,11 @@ As in the case for Italy, the best fit estimate for the total number of cases ha
 
 ### USA
 
-The current (as of **{% include_relative plotdump/usadate.txt %}**) best 3-week data fit for America.
-The best fit and bootstrap projections differ significantly and both estimates for the USA are still rising quickly (see below). This would suggest an unstable situation. It is not even certain that the peak is actually over. The large error estimates also imply that obtaining reliable estimates for the final outcome using just available data is difficult at the moment.
+The current (as of **{% include_relative plotdump/usadate.txt %}**) best fits for America.
 
 ![](plotdump/usaloggraf.png)
+
+The best fit and bootstrap projections differ significantly and both estimates for the USA are still rising quickly (see below). This would suggest an unstable situation. It is not even certain that the peak is actually over. The large error estimates also imply that obtaining reliable estimates for the final outcome using just available data is difficult at the moment.
 
 ![](plotdump/usagraf.png)
 
