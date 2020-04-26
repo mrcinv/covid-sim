@@ -10,17 +10,17 @@ It should be emphasized that **the only numbers used in the computations are dai
 
 These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating all the relevant parameters, and should be viewed simply as projections based only on available imperfect and often unreliable data.
 
-For each projections only data from the past 3 weeks is used. The assumption here is that after three weeks people are no longer infectious so older data can be discarded.
+The main projections we give uses only data from the past 3 weeks. The assumption here is that after three weeks people are no longer infectious and the dynamics of the early stages of the epidemic should not effect the future, so older data can be discarded,
 
 The basic the theory used to obtain these estimates is explained under [theory](theory.md). 
 
 ### Slovenia
 
-The following graph shows the current (as of **{% include_relative plotdump/slodate.txt %}**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. 
+The following graph shows the current (as of **{% include_relative plotdump/slodate.txt %}**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. For most countries and most of time, the errors of this best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors.
 
 ![](plotdump/slologgraf.png)
 
-This next plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For most countries, the best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors. For Slovenia this bootstrap projection differs only slightly from the best fit projection. This means that on average the best fit has been a been a good estimate the number of daily cases, at least for now.
+This next plot shows the daily increases and daily increase estimates (together with rough expected error estimates) and the current projected curve. For Slovenia this bootstrap projection differs only slightly from the best fit projection. This means that on average the best fit has been a been a good estimate the number of daily cases, at least for now.
 
 ![](plotdump/slograf.png)
 
@@ -28,7 +28,7 @@ The next graph shows the estimated number of days since the peak of the outbreak
 
 ![](plotdump/slodfgraf.png) 
 
-The last plot shows how the estimates for the total number of cases that will occur during the outbreak have changed with time. As we see, for Slovenia both projections have not changed much for a while. 
+The last plot shows how the estimates for the total number of cases that will occur during the outbreak have changed with time. As we see, for Slovenia none of the projections have changed significantly for several weeks. 
 
 ![](plotdump/slofinalplot.png)
 
