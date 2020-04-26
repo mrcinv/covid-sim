@@ -34,7 +34,7 @@ The last plot shows how the estimates for the total number of cases that will oc
 
 ### Italy
 
-The current (as of **{% include_relative plotdump/italydate.txt %}**) fits for Italy.
+The current (as of **{% include_relative plotdump/italydate.txt %}**) best fits for Italy.
 
 ![](plotdump/italyloggraf.png) 
 
