@@ -10,13 +10,14 @@ It should be emphasized that **the only numbers used in the computations are dai
 
 These are therefore **not** scientific forecasts since we are not pretending we know of any credible way of estimating all the relevant parameters, and should be viewed simply as projections based only on available imperfect and often unreliable data.
 
-The main projections we give uses only data from the past 3 weeks. The assumption here is that after three weeks people are no longer infectious and the dynamics of the early stages of the epidemic should not effect the future, so older data can be discarded,
+The main projections we give uses only data from the past 3 weeks. The assumption here is that after three weeks people are no longer infectious and the dynamics of the early stages of the epidemic should not effect the future, so older data can be discarded.
+For most countries and most of time, the errors of this best fit estimate shows a bias towards smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors.
 
 The basic the theory used to obtain these estimates is explained under [theory](theory.md). 
 
 ### Slovenia
 
-The following graph shows the current (as of **{% include_relative plotdump/slodate.txt %}**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries. For most countries and most of time, the errors of this best fit estimate shows a bias for smaller than actual daily increases. In order to correct this we also include a 'boostrap' estimate which at least partially compensates for the bias in the errors.
+The following graph shows the current (as of **{% include_relative plotdump/slodate.txt %}**) best fit for total number of cases. For the case of Slovenia the numbers of daily confirmed cases are normalised with respect to number of daily tests, so these are not the raw daily numbers. As a result the fit has been tighter and estimates have been more accurate than for other countries.
 
 ![](plotdump/slologgraf.png)
 
