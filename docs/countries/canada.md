@@ -1,4 +1,6 @@
-Plots for Canada (last date **{% include_relative plotdump/Canadadate.txt %}**)
+### Canada
+
+Plots for Canada last updated on **{% include_relative plotdump/Canadadate.txt %}**
 ![](plotdump/Canadagraf.png)
 ![](plotdump/Canadaloggraf.png)
 ![](plotdump/Canadadfgraf.png)
