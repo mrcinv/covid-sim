@@ -1,0 +1,5 @@
+Plots for New Zealand (last date **{% include_relative plotdump/newzealanddate.txt %}**)
+![](plotdump/newzealandgraf.png)
+![](plotdump/newzealandloggraf.png)
+![](plotdump/newzealanddfgraf.png)
+![](plotdump/newzealandfinalplot.png)
