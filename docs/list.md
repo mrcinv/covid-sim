@@ -12,3 +12,4 @@ A list of countries for which the projections are available:
 * [Greece](countries/greece.md)
 * [Japan](countries/japan.md)
 * [Spain](countries/spain.md)
+* [Denmark](countries/denmark.md)
