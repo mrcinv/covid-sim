@@ -1,6 +1,6 @@
 #### More selected countries 
 
-![](countires/plotdump/mscprojplots.png)
+![](countries/plotdump/mscprojplots.png)
 
 A list of countries for which the projections are available:
 * [Croatia](countries/croatia.md)
