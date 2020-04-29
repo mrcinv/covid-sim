@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     79236,       2017]
-NotebookOptionsPosition[     78939,       2002]
-NotebookOutlinePosition[     79295,       2018]
-CellTagsIndexPosition[     79252,       2015]
+NotebookDataLength[     79572,       2022]
+NotebookOptionsPosition[     79275,       2007]
+NotebookOutlinePosition[     79631,       2023]
+CellTagsIndexPosition[     79588,       2020]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -412,12 +412,14 @@ Cell[BoxData[{
            RowBox[{"{", 
             RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ")"}]}], ";", 
         "\[IndentingNewLine]", 
-        RowBox[{"Print", "[", 
-         RowBox[{"{", 
-          RowBox[{"nres", ",", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "[", 
            RowBox[{"{", 
-            RowBox[{"lb", ",", "rb"}], "}"}]}], "}"}], "]"}], ";", 
-        "\[IndentingNewLine]", 
+            RowBox[{"nres", ",", 
+             RowBox[{"{", 
+              RowBox[{"lb", ",", "rb"}], "}"}]}], "}"}], "]"}], ";"}], "*)"}],
+         "\[IndentingNewLine]", 
         RowBox[{"abctab", "=", 
          RowBox[{"AppendTo", "[", 
           RowBox[{"abctab", ",", "nip0"}], "]"}]}], ";", 
@@ -1052,7 +1054,7 @@ Cell[BoxData[{
  RowBox[{"Clear", "[", 
   RowBox[{"somegraphs", ",", "grafprojtime"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"grafprojtime", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"grafprojtime", "=", "10"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"somegraphs", "[", 
    RowBox[{
@@ -1090,7 +1092,7 @@ Cell[BoxData[{
      RowBox[{"stats", "=", 
       RowBox[{"generatestats", "[", 
        RowBox[{
-       "tdata", ",", "stp0", ",", "21", ",", "ttime", ",", "startdate"}], 
+       "tdata", ",", "stp0", ",", "lag", ",", "ttime", ",", "startdate"}], 
        "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"{", 
@@ -1196,8 +1198,8 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{
           "\"\<daily increase estimate (at the time)\>\"", ",", 
-           "\"\<estimate+expected error\>\"", ",", 
-           "\"\<estimate-expected error\>\""}], "}"}]}], ",", 
+           "\"\<estimate+expected error (at the time)\>\"", ",", 
+           "\"\<estimate-expected error (at the time)\>\""}], "}"}]}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"projtimeinterval", "=", 
@@ -1998,7 +2000,10 @@ time)\>\"", "}"}]}], ",",
    3.796875901255398*^9, {3.796877541845615*^9, 3.796877541975975*^9}, {
    3.796879702469882*^9, 3.796879704983697*^9}, {3.7968797364856873`*^9, 
    3.796879741385458*^9}, 3.796880147775312*^9, {3.7968895427000637`*^9, 
-   3.796889546858634*^9}}]
+   3.796889546858634*^9}, {3.796889748008889*^9, 3.79688975218592*^9}, {
+   3.7968899754080267`*^9, 3.796889975769368*^9}, {3.796891441332287*^9, 
+   3.796891441859468*^9}, {3.7968943464919567`*^9, 3.796894368231172*^9}, {
+   3.796974438817933*^9, 3.796974457681243*^9}}]
 },
 WindowSize->{610, 577},
 WindowMargins->{{0, Automatic}, {Automatic, 29}},
@@ -2018,7 +2023,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 1685, 56, 97, "Input"],
-Cell[2246, 78, 76689, 1922, 6752, "Input"]
+Cell[2246, 78, 77025, 1927, 6769, "Input"]
 }
 ]
 *)
