@@ -154,5 +154,20 @@
    <Number>10</Number>
    <Number>0</Number>
   </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>United Kingdom</String>
+   <Number>200</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>181106.79697173668</Number>
+    <Number Precision=''>1069.9501757425367</Number>
+    <Number Precision=''>0.1337539999625829</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>14</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
  </Function>
 </Expression>
