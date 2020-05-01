@@ -45,7 +45,7 @@ The large error estimates mean the new numbers are deviating from the current co
 
 ![](plotdump/italydfgraf.png)
 
-Both estimates for the final number of cases for Italy have consistentently risen throughout the epidemic but the bias in the best fit projection has recently begun to fall and the two estimates seem to be converging.
+Both estimates for the final number of cases for Italy have risen throughout most of the epidemic but the bias in the best fit projection has recently begun to fall and the two estimates seem to be converging.
 
 ![](plotdump/italyfinalplot.png)
 
