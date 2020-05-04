@@ -10,9 +10,9 @@
    <Number>300</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>213911.56031803836</Number>
-    <Number Precision=''>3137.4917398580765</Number>
-    <Number Precision=''>0.14917670401800465</Number>
+    <Number Precision=''>215675.98160202175</Number>
+    <Number Precision=''>3181.500137016704</Number>
+    <Number Precision=''>0.14826151757050574</Number>
    </Function>
    <Number>28</Number>
    <Number>21</Number>
@@ -25,9 +25,9 @@
    <Number>200</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>69033.44468177808</Number>
-    <Number Precision=''>1494.692050117293</Number>
-    <Number Precision=''>0.10921835643201297</Number>
+    <Number Precision=''>69033.4446817933</Number>
+    <Number Precision=''>1494.6920501191814</Number>
+    <Number Precision=''>0.10921835643196758</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -40,9 +40,9 @@
    <Number>100</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>6642.134484232305</Number>
-    <Number Precision=''>97.0158746851587</Number>
-    <Number Precision=''>0.22607528964593357</Number>
+    <Number Precision=''>6642.134484142101</Number>
+    <Number Precision=''>97.01587464464787</Number>
+    <Number Precision=''>0.22607528967238058</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -55,9 +55,9 @@
    <Number>5</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>1462.867733228626</Number>
-    <Number Precision=''>16.71915328105994</Number>
-    <Number Precision=''>0.2321524155356461</Number>
+    <Number Precision=''>1462.86773322965</Number>
+    <Number Precision=''>16.719153253505446</Number>
+    <Number Precision=''>0.23215241560626731</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -70,9 +70,9 @@
    <Number>10</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>2080.086933036988</Number>
-    <Number Precision=''>26.976608681430942</Number>
-    <Number Precision=''>0.14814788799302162</Number>
+    <Number Precision=''>2080.086933053336</Number>
+    <Number Precision=''>26.9766086897981</Number>
+    <Number Precision=''>0.14814788798275189</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -85,9 +85,9 @@
    <Number>10</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>7568.774229137879</Number>
-    <Number Precision=''>97.48275161259915</Number>
-    <Number Precision=''>0.14777441672707417</Number>
+    <Number Precision=''>7568.774229171533</Number>
+    <Number Precision=''>97.48275161524633</Number>
+    <Number Precision=''>0.14777441672550098</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -100,9 +100,9 @@
    <Number>200</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>27171.00603246614</Number>
-    <Number Precision=''>565.6930684723521</Number>
-    <Number Precision=''>0.093066019820255</Number>
+    <Number Precision=''>27171.006032500765</Number>
+    <Number Precision=''>565.6930684772811</Number>
+    <Number Precision=''>0.09306601982000183</Number>
    </Function>
    <Number>28</Number>
    <Number>21</Number>
@@ -115,9 +115,9 @@
    <Number>50</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>2580.5558304274255</Number>
-    <Number Precision=''>113.92779268855212</Number>
-    <Number Precision=''>0.12813716548311418</Number>
+    <Number Precision=''>2580.5558304144824</Number>
+    <Number Precision=''>113.92779267513082</Number>
+    <Number Precision=''>0.12813716548803347</Number>
    </Function>
    <Number>28</Number>
    <Number>21</Number>
@@ -130,9 +130,9 @@
    <Number>950</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>16216.352964712167</Number>
-    <Number Precision=''>443.27676726077806</Number>
-    <Number Precision=''>0.1337614294577516</Number>
+    <Number Precision=''>16216.352964752372</Number>
+    <Number Precision=''>443.2767672706728</Number>
+    <Number Precision=''>0.133761429456781</Number>
    </Function>
    <Number>28</Number>
    <Number>21</Number>
@@ -145,9 +145,9 @@
    <Number>1100</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>10043.639623670915</Number>
-    <Number Precision=''>953.111103667191</Number>
-    <Number Precision=''>0.10608218238289992</Number>
+    <Number Precision=''>10043.639623658764</Number>
+    <Number Precision=''>953.1111036642944</Number>
+    <Number Precision=''>0.10608218238316226</Number>
    </Function>
    <Number>28</Number>
    <Number>21</Number>
@@ -160,9 +160,9 @@
    <Number>300</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>193682.81162214436</Number>
-    <Number Precision=''>633.440411316419</Number>
-    <Number Precision=''>0.14594429761024927</Number>
+    <Number Precision=''>193682.81162210088</Number>
+    <Number Precision=''>633.4404113161813</Number>
+    <Number Precision=''>0.14594429761026523</Number>
    </Function>
    <Number>21</Number>
    <Number>21</Number>
@@ -175,13 +175,58 @@
    <Number>200</Number>
    <Function>
     <Symbol>List</Symbol>
-    <Number Precision=''>199335.39146245294</Number>
-    <Number Precision=''>1450.2358870675323</Number>
-    <Number Precision=''>0.12238938899001339</Number>
+    <Number Precision=''>199335.39146248746</Number>
+    <Number Precision=''>1450.235887070382</Number>
+    <Number Precision=''>0.12238938898995863</Number>
    </Function>
    <Number>21</Number>
    <Number>14</Number>
    <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Hungary</String>
+   <Number>50</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>3365.6444625267736</Number>
+    <Number Precision=''>104.40659882066325</Number>
+    <Number Precision=''>0.11408451894205024</Number>
+   </Function>
+   <Number>28</Number>
+   <Number>14</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>France</String>
+   <Number>300</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>177276.3912847858</Number>
+    <Number Precision=''>1518.766119969371</Number>
+    <Number Precision=''>0.13797898997605668</Number>
+   </Function>
+   <Number>28</Number>
+   <Number>14</Number>
+   <Number>10</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Singapore</String>
+   <Number>900</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>21078.466173566427</Number>
+    <Number Precision=''>299.80354836134035</Number>
+    <Number Precision=''>0.17802870984146776</Number>
+   </Function>
+   <Number>28</Number>
+   <Number>14</Number>
+   <Number>5</Number>
    <Number>0</Number>
   </Function>
  </Function>
