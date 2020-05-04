@@ -21,3 +21,4 @@ A list of countries for which the projections are available:
 * [Russia](countries/russia.md)
 * [UK](countries/uk.md)
 * [Hungary](countries/hungary.md)
+* [France](countries/france.md)
