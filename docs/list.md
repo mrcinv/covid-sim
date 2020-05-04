@@ -15,4 +15,4 @@ A list of countries for which the projections are available:
 * [Denmark](countries/denmark.md)
 * [Russia](countries/russia.md)
 * [UK](countries/uk.md)
-* [Hungary]()(countries/hungary.md)
+* [Hungary](countries/hungary.md)
