@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1508875,      33149]
-NotebookOptionsPosition[   1477824,      32184]
-NotebookOutlinePosition[   1481188,      32276]
-CellTagsIndexPosition[   1480559,      32259]
+NotebookDataLength[   1533929,      33766]
+NotebookOptionsPosition[   1502831,      32800]
+NotebookOutlinePosition[   1506194,      32892]
+CellTagsIndexPosition[   1505565,      32875]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32180,10 +32180,626 @@ Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"2020", ",", "3", ",", "12"}], "}"}]], "Output",
  CellChangeTimes->{3.7963522725573587`*^9}]
-}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "somegraphs2", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"somegraphs2", "[", 
+   RowBox[{
+   "stp0_", ",", "fip0_", ",", "ttime_", ",", "tdata_", ",", "startdate_", 
+    ",", "lag_", ",", "projtime_", ",", "drop_", ",", "bootlag_", ",", 
+    "population_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "dailyincrease", ",", "stats", ",", "oneplot", ",", "erplot", ",", 
+      "projtimeinterval", ",", "dlplot", ",", "graf", ",", "logfunplot", ",", 
+      "cumdinplot", ",", "loggraf", ",", "dfpplot", ",", "progress", ",", 
+      "progplot", ",", "sifdate", ",", "sifplot", ",", "peakdate", ",", 
+      "fifdate", ",", "ticks", ",", "ests", ",", "esterrors", ",", 
+      "estminerrors", ",", "meanpasterrors", ",", "bootabctab", ",", 
+      "boottimewinds", ",", "bootdatelists", ",", "tabctab", ",", "twinds", 
+      ",", "dlbootplot", ",", "bootexpeakdate", ",", "bootabc", ",", 
+      "bootlogfunplot", ",", "bootplot", ",", "bestfitplot", ",", 
+      "pastfinalplot", ",", "popbootplot", ",", "curdatelist", ",", 
+      "lfunvals", ",", "grafptimeinterval", ",", "stlogfunplot", ",", 
+      "threeweektimeinterval", ",", "lagstarttime", ",", "lagstartdate", ",", 
+      "stdlplot"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"dailyincrease", "=", 
+      RowBox[{
+       RowBox[{"tdata", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ";;", 
+          RowBox[{"-", "1"}]}], "]"}], "]"}], "-", 
+       RowBox[{"tdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", 
+          RowBox[{"-", "2"}]}], "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"stats", "=", 
+      RowBox[{"generatestats", "[", 
+       RowBox[{
+       "tdata", ",", "stp0", ",", "lag", ",", "ttime", ",", "startdate"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"tabctab", ",", "twinds"}], "}"}], "=", 
+      RowBox[{"estimates", "[", 
+       RowBox[{"tdata", ",", "stp0", ",", "lag", ",", "ttime"}], "]"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "meanpasterrors", ",", "bootabctab", ",", "boottimewinds", ",", 
+        "bootdatelists"}], "}"}], "=", 
+      RowBox[{"bootstrapestimates", "[", 
+       RowBox[{
+       "tdata", ",", "stp0", ",", "ttime", ",", "lag", ",", "bootlag", ",", 
+        "startdate", ",", "tabctab", ",", "twinds"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bootabc", "=", 
+      RowBox[{"bootabctab", "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"sifdate", "=", 
+      RowBox[{"DatePlus", "[", 
+       RowBox[{"startdate", ",", 
+        RowBox[{
+         RowBox[{"plusd", "[", "fip0", "]"}], "-", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"peakdate", "=", 
+      RowBox[{"DatePlus", "[", 
+       RowBox[{"startdate", ",", 
+        RowBox[{
+         RowBox[{"expeak", "[", "fip0", "]"}], "-", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fifdate", "=", 
+      RowBox[{"DatePlus", "[", 
+       RowBox[{"startdate", ",", 
+        RowBox[{
+         RowBox[{"minsd", "[", "fip0", "]"}], "-", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bootexpeakdate", "=", 
+      RowBox[{"DatePlus", "[", 
+       RowBox[{"startdate", ",", 
+        RowBox[{
+         RowBox[{"expeak", "[", "bootabc", "]"}], "-", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"sifdate", "=", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", 
+          RowBox[{"expeak", "[", "fip0", "]"}]}], "]"}]}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", "sifdate", "]"}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"oneplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{"dailyincrease", ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "1"}], "]"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<daily increase\>\"", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ests", "=", 
+      RowBox[{"stats", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"esterrors", "=", 
+      RowBox[{"stats", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"estminerrors", "=", 
+      RowBox[{"ests", "-", "esterrors"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"estminerrors", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Max", "[", 
+          RowBox[{"0", ",", "#"}], "]"}], "&"}], ",", "estminerrors"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"erplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"ests", ",", 
+          RowBox[{"ests", "+", "esterrors"}], ",", "estminerrors"}], "}"}], 
+        ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "Red", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Orange", ",", "Dashed"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"Orange", ",", "Dashed"}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<daily increase estimate (at the time)\>\"", ",", 
+           "\"\<estimate+expected error (at the time)\>\"", ",", 
+           "\"\<estimate-expected error (at the time)\>\""}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"projtimeinterval", "=", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"Append", "[", 
+        RowBox[{"ttime", ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"t", ",", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "1"}], ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "projtime", "+", 
+              "1"}]}], "}"}]}], "]"}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"lagstarttime", "=", 
+      RowBox[{"ttime", "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "lag"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"lagstartdate", "=", 
+      RowBox[{"DatePlus", "[", 
+       RowBox[{"startdate", ",", "lagstarttime"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"threeweektimeinterval", "=", "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"Append", "[", 
+        RowBox[{
+         RowBox[{"ttime", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"-", "lag"}], ";;"}], "]"}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{"t", ",", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "1"}], ",", 
+             RowBox[{
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", "projtime", "+", 
+              "1"}]}], "}"}]}], "]"}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"stdlplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dlfun", "[", 
+            RowBox[{"#", ",", "stp0"}], "]"}], "&"}], ",", 
+          "projtimeinterval"}], "]"}], ",", "startdate", ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<best fit for all past data\>\"", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", "Black", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dlplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dlfun", "[", 
+            RowBox[{"#", ",", "fip0"}], "]"}], "&"}], ",", 
+          "threeweektimeinterval"}], "]"}], ",", "lagstartdate", ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<best fit projection for last 3 weeks of data\>\"", "}"}]}],
+         ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", "Green", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dlbootplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"dlfun", "[", 
+            RowBox[{"#", ",", "bootabc"}], "]"}], "&"}], ",", 
+          "threeweektimeinterval"}], "]"}], ",", "lagstartdate", ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<bootstrap projection\>\"", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Purple", ",", "Dashed"}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"popbootplot", "=", 
+        RowBox[{"DateListPlot", "[", 
+         RowBox[{
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"10", "^", "5"}], 
+              RowBox[{
+               RowBox[{"lfun", "[", 
+                RowBox[{"#", ",", "bootabc"}], "]"}], "/", "population"}]}], 
+             "&"}], ",", "ttime"}], "]"}], ",", "startdate", ",", 
+          RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"bootfwplots", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"bootfwplots", ",", "popbootplot"}], "]"}]}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"ticks", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"DatePlus", "[", 
+           RowBox[{"startdate", ",", "i"}], "]"}], ",", 
+          RowBox[{"DateString", "[", 
+           RowBox[{
+            RowBox[{"DatePlus", "[", 
+             RowBox[{"startdate", ",", "i"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<MonthNameShort\>\"", ",", " ", "\"\< \>\"", ",", 
+              "\"\<Day\>\""}], "}"}]}], "]"}], ",", "0.02", ",", "Blue"}], 
+         "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"ttime", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"ttime", "[", 
+            RowBox[{"[", 
+             RowBox[{"-", "1"}], "]"}], "]"}], "+", "projtime"}], ",", "7"}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ticks", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"ticks", ",", 
+        RowBox[{"{", 
+         RowBox[{"peakdate", ",", "\"\< \>\"", ",", "0.05", ",", "Black"}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"ticks", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"ticks", ",", 
+          RowBox[{"{", 
+           RowBox[{"fifdate", ",", "\"\<\>\"", ",", ".02", ",", "Black"}], 
+           "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ticks", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"ticks", ",", 
+          RowBox[{"{", 
+           RowBox[{"sifdate", ",", "\"\<\>\"", ",", ".02", ",", "Black"}], 
+           "}"}]}], "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"ticks", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"ticks", ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "bootexpeakdate", ",", "\"\< \>\"", ",", "0.05", ",", "Purple"}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"sifplot", "=", 
+        RowBox[{"DateListPlot", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", 
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"ttime", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+          "startdate", ",", 
+          RowBox[{"Ticks", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                "fifdate", ",", "\"\<estimated 1. inflection\>\"", ",", ".05",
+                  ",", "Red"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "peakdate", ",", "\"\<estimated peak\>\"", ",", ".05", ",", 
+                 "Red"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                "sifdate", ",", "\"\<estimated 2. inflection\>\"", ",", ".05",
+                  ",", "Red"}], "}"}]}], "}"}], ",", "Automatic"}], "}"}]}], 
+          ",", 
+          RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+          RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+          RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";"}], 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"sifplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"ttime", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{"ttime", "[", 
+             RowBox[{"[", 
+              RowBox[{"-", "1"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+        "startdate", ",", 
+        RowBox[{"Ticks", "->", 
+         RowBox[{"{", 
+          RowBox[{"ticks", ",", "Automatic"}], "}"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+        RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"FrameTicks", "\[Rule]", "All"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Thick"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"projtimeinterval", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"projtimeinterval", ",", "drop"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"threeweektimeinterval", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"threeweektimeinterval", ",", "drop"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"stlogfunplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "stp0"}], "]"}], "&"}], ",", 
+          "projtimeinterval"}], "]"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "drop"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<best fit for all data\>\"", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"logfunplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "fip0"}], "]"}], "&"}], ",", 
+          "threeweektimeinterval"}], "]"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"lagstartdate", ",", "drop"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<best fit projection for last 3 weeks of data\>\"", "}"}]}],
+         ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Green"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bootlogfunplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "bootabc"}], "]"}], "&"}], ",", 
+          "threeweektimeinterval"}], "]"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"lagstartdate", ",", "drop"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<bootstrap projection\>\"", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Purple", ",", "Dashed"}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"cumdinplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{"tdata", ",", "startdate", ",", 
+        RowBox[{"Joined", "\[Rule]", "False"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<total confirmed cases\>\"", "}"}]}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"loggraf", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+       "stlogfunplot", ",", "logfunplot", ",", "bootlogfunplot", ",", 
+        "cumdinplot", ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+        RowBox[{"PlotRange", "->", "All"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"dfpplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"-", 
+          RowBox[{"stats", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<estimated days from peak (at the time)\>\"", "}"}]}], ",", 
+        
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"PointSize", "[", "0.010", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"progress", "=", 
+      RowBox[{"stats", "[", 
+       RowBox[{"[", "5", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"progplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", "progress", "}"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", "lag"}], "]"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<estimated progress (at the time)\>\"", "}"}]}], 
+        ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"PointSize", "[", "0.010", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Detailed\>\""}], ",", 
+        RowBox[{"PlotRange", "->", "All"}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"graf", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+       "sifplot", ",", "stdlplot", ",", "dlplot", ",", "dlbootplot", ",", 
+        "oneplot", ",", "erplot", ",", 
+        RowBox[{"PlotRange", "->", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bootplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"bootdatelists", ",", 
+           RowBox[{
+            RowBox[{"Transpose", "[", "bootabctab", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Purple", ",", "Dashed"}], "}"}]}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<bootstrap estimates for final number of cases (at the \
+time)\>\"", "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bestfitplot", "=", 
+      RowBox[{"DateListPlot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Transpose", "[", "tabctab", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"DatePlus", "[", 
+         RowBox[{"startdate", ",", 
+          RowBox[{"ttime", "[", 
+           RowBox[{"[", "lag", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{
+         "{", "\"\<best fit estimates for final number of cases (at the time)\
+\>\"", "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+        RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"pastfinalplot", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{"bestfitplot", ",", "bootplot", ",", 
+        RowBox[{"PlotRange", "->", "All"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<boostrap estimates : \>\"", ",", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"bootdatelists", ",", 
+             RowBox[{
+              RowBox[{"Transpose", "[", "bootabctab", "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
+       ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"grafptimeinterval", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ttime", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "-", "1", "+", "i"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "ttime", "]"}], "+", "grafprojtime"}]}], 
+         "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"curdatelist", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DatePlus", "[", 
+          RowBox[{"startdate", ",", "#"}], "]"}], "&"}], ",", 
+        "grafptimeinterval"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "ttime", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"lfunvals", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"10", "^", "5"}], 
+          RowBox[{
+           RowBox[{"lfun", "[", 
+            RowBox[{"#", ",", "bootabc"}], "]"}], "/", "population"}]}], 
+         "&"}], ",", "grafptimeinterval"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"countrybootabcs", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"countrybootabcs", ",", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"curdatelist", ",", "lfunvals"}], "}"}], "]"}]}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "graf", ",", "loggraf", ",", "dfpplot", ",", "progplot", ",", 
+       "pastfinalplot", ",", "bootabc"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.797486047708272*^9, 3.79748605548805*^9}, 
+   3.7974862315743723`*^9, {3.7974862917141438`*^9, 3.797486406870944*^9}, {
+   3.79748657515392*^9, 3.797486623127947*^9}, {3.7974866699635677`*^9, 
+   3.797486705919064*^9}, {3.797486776048675*^9, 3.79748691023046*^9}, {
+   3.79748694507451*^9, 3.797487057401617*^9}, {3.797487152763873*^9, 
+   3.7974871549292994`*^9}, {3.7974872873953457`*^9, 
+   3.7974873149409657`*^9}, {3.797487389740918*^9, 3.7974874556098423`*^9}, {
+   3.797487504763051*^9, 3.79748754610469*^9}, {3.797487599303103*^9, 
+   3.7974876002491913`*^9}, {3.797487635728695*^9, 3.797487650335761*^9}, {
+   3.797487923668371*^9, 3.7974879305938387`*^9}, {3.797488221561151*^9, 
+   3.797488223880728*^9}, {3.79748868867913*^9, 3.797488689323151*^9}}]
 },
-WindowSize->{922, 618},
-WindowMargins->{{Automatic, 106}, {Automatic, 0}},
+WindowSize->{672, 618},
+WindowMargins->{{39, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \
 2014)",
 StyleDefinitions->"Default.nb"
@@ -32249,7 +32865,7 @@ CellTagsIndex->{
  "Info3796306436-9938966"->{
   Cell[1438458, 31256, 132, 2, 40, "Print",
    CellTags->"Info3796306436-9938966"],
-  Cell[1438593, 31260, 5607, 136, 408, "Print",
+  Cell[1438593, 31260, 5607, 136, 374, "Print",
    CellTags->"Info3796306436-9938966"]},
  "Info3796302929-9938966"->{
   Cell[1463511, 31797, 4056, 62, 106, "Print",
@@ -32258,19 +32874,19 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3796011853-1977969", 1478145, 32195},
- {"Info3796144262-6889113", 1478260, 32198},
- {"Info3796145035-9446480", 1478458, 32203},
- {"Info3796144988-9446480", 1478656, 32208},
- {"Info3796144817-9446480", 1478854, 32213},
- {"Info3796144783-9446480", 1479052, 32218},
- {"Info3796140159-6889113", 1479250, 32223},
- {"Info3796139928-6889113", 1479448, 32228},
- {"Info3796291118-7812657", 1479645, 32233},
- {"Info3796310227-9938966", 1479844, 32238},
- {"Info3796306469-9938966", 1480045, 32243},
- {"Info3796306436-9938966", 1480246, 32248},
- {"Info3796302929-9938966", 1480448, 32253}
+ {"Info3796011853-1977969", 1503151, 32811},
+ {"Info3796144262-6889113", 1503266, 32814},
+ {"Info3796145035-9446480", 1503464, 32819},
+ {"Info3796144988-9446480", 1503662, 32824},
+ {"Info3796144817-9446480", 1503860, 32829},
+ {"Info3796144783-9446480", 1504058, 32834},
+ {"Info3796140159-6889113", 1504256, 32839},
+ {"Info3796139928-6889113", 1504454, 32844},
+ {"Info3796291118-7812657", 1504651, 32849},
+ {"Info3796310227-9938966", 1504850, 32854},
+ {"Info3796306469-9938966", 1505051, 32859},
+ {"Info3796306436-9938966", 1505252, 32864},
+ {"Info3796302929-9938966", 1505454, 32869}
  }
 *)
 (*NotebookFileOutline
@@ -32286,7 +32902,7 @@ Cell[8415, 214, 916, 16, 21, "Print"]
 Cell[9346, 233, 7541, 140, 709, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16924, 378, 782, 19, 97, "Input"],
+Cell[16924, 378, 782, 19, 80, "Input"],
 Cell[CellGroupData[{
 Cell[17731, 401, 277, 6, 21, "Print"],
 Cell[18011, 409, 278, 6, 21, "Print"],
@@ -32295,7 +32911,7 @@ Cell[18292, 417, 280, 6, 21, "Print"]
 Cell[18587, 426, 3889, 72, 335, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22513, 503, 5892, 145, 760, "Input"],
+Cell[22513, 503, 5892, 145, 743, "Input"],
 Cell[28408, 650, 1573, 22, 28, "Output"],
 Cell[CellGroupData[{
 Cell[30006, 676, 1668, 26, 21, "Print"],
@@ -32304,9 +32920,9 @@ Cell[33345, 732, 1663, 26, 21, "Print"]
 }, Open  ]],
 Cell[35023, 761, 7993, 144, 675, "Output"]
 }, Open  ]],
-Cell[43031, 908, 8353, 204, 624, "Input"],
+Cell[43031, 908, 8353, 204, 556, "Input"],
 Cell[CellGroupData[{
-Cell[51409, 1116, 717, 14, 46, "Input"],
+Cell[51409, 1116, 717, 14, 28, "Input"],
 Cell[CellGroupData[{
 Cell[52151, 1134, 811, 14, 21, "Print"],
 Cell[52965, 1150, 812, 14, 21, "Print"],
@@ -32326,7 +32942,7 @@ Cell[189077, 4090, 333, 5, 28, "Output"],
 Cell[189413, 4097, 335, 5, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[189785, 4107, 617, 13, 46, "Input"],
+Cell[189785, 4107, 617, 13, 28, "Input"],
 Cell[CellGroupData[{
 Cell[190427, 4124, 549, 11, 21, "Print"],
 Cell[190979, 4137, 552, 11, 21, "Print"],
@@ -32390,7 +33006,7 @@ Cell[516548, 11140, 242, 5, 28, "Input"],
 Cell[516793, 11147, 178, 4, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[517008, 11156, 346, 9, 46, "Input"],
+Cell[517008, 11156, 346, 9, 28, "Input"],
 Cell[CellGroupData[{
 Cell[517379, 11169, 255, 6, 21, "Print"],
 Cell[517637, 11177, 254, 6, 21, "Print"],
@@ -32467,10 +33083,10 @@ Cell[705478, 15309, 1485, 25, 74, "Print",
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[707000, 15339, 99, 1, 28, "Input"],
-Cell[707102, 15342, 2656, 55, 182, "Output"]
+Cell[707102, 15342, 2656, 55, 148, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[709795, 15402, 3603, 95, 556, "Input"],
+Cell[709795, 15402, 3603, 95, 539, "Input"],
 Cell[713401, 15499, 841, 12, 28, "Output"],
 Cell[CellGroupData[{
 Cell[714267, 15515, 959, 16, 21, "Print"],
@@ -32705,17 +33321,17 @@ Cell[792358, 17597, 458, 6, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[792853, 17608, 151, 3, 28, "Input"],
-Cell[793007, 17613, 2177, 33, 1117, "Output"]
+Cell[793007, 17613, 2177, 33, 1066, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[795221, 17651, 1032, 23, 63, "Input"],
 Cell[796256, 17676, 240, 3, 28, "Output"],
 Cell[796499, 17681, 240, 3, 28, "Output"],
-Cell[796742, 17686, 2063, 31, 1066, "Output"]
+Cell[796742, 17686, 2063, 31, 1015, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[798842, 17722, 398, 7, 28, "Input"],
-Cell[799243, 17731, 2203, 34, 1117, "Output"]
+Cell[799243, 17731, 2203, 34, 1066, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[801483, 17770, 257, 5, 28, "Input"],
@@ -32723,13 +33339,13 @@ Cell[801743, 17777, 145, 2, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[801925, 17784, 194, 6, 28, "Input"],
-Cell[802122, 17792, 518, 10, 114, "Output"]
+Cell[802122, 17792, 518, 10, 80, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[802677, 17807, 154, 2, 46, "Input"],
-Cell[802834, 17811, 176, 2, 46, "Output"]
+Cell[802677, 17807, 154, 2, 28, "Input"],
+Cell[802834, 17811, 176, 2, 28, "Output"]
 }, Open  ]],
-Cell[803025, 17816, 193, 4, 63, "Input"],
+Cell[803025, 17816, 193, 4, 46, "Input"],
 Cell[803221, 17822, 488, 11, 80, "Input"],
 Cell[803712, 17835, 432, 11, 46, "Input"],
 Cell[CellGroupData[{
@@ -33018,12 +33634,12 @@ Cell[CellGroupData[{
 Cell[1415820, 30724, 613, 17, 80, "Input"],
 Cell[1416436, 30743, 1092, 18, 28, "Output"],
 Cell[1417531, 30763, 1755, 26, 80, "Output"],
-Cell[1419289, 30791, 1583, 24, 63, "Output"]
+Cell[1419289, 30791, 1583, 24, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1420909, 30820, 2232, 52, 148, "Input"],
 Cell[1423144, 30874, 649, 12, 21, "Print"],
-Cell[1423796, 30888, 124, 2, 62, "Output"]
+Cell[1423796, 30888, 124, 2, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1423957, 30895, 226, 4, 28, "Input"],
@@ -33068,7 +33684,7 @@ Cell[1438309, 31250, 124, 2, 28, "Input"],
 Cell[CellGroupData[{
 Cell[1438458, 31256, 132, 2, 40, "Print",
  CellTags->"Info3796306436-9938966"],
-Cell[1438593, 31260, 5607, 136, 408, "Print",
+Cell[1438593, 31260, 5607, 136, 374, "Print",
  CellTags->"Info3796306436-9938966"]
 }, Open  ]]
 }, Open  ]],
@@ -33091,9 +33707,9 @@ Cell[1463385, 31793, 123, 2, 28, "Input"],
 Cell[1463511, 31797, 4056, 62, 106, "Print",
  CellTags->"Info3796302929-9938966"]
 }, Open  ]],
-Cell[1467582, 31862, 524, 15, 28, "Input"],
+Cell[1467582, 31862, 524, 15, 46, "Input"],
 Cell[CellGroupData[{
-Cell[1468131, 31881, 993, 31, 80, "Input"],
+Cell[1468131, 31881, 993, 31, 97, "Input"],
 Cell[1469127, 31914, 278, 6, 28, "Output"],
 Cell[1469408, 31922, 2049, 42, 231, "Output"]
 }, Open  ]],
@@ -33114,7 +33730,7 @@ Cell[1472327, 32002, 322, 7, 28, "Input"],
 Cell[1472652, 32011, 164, 2, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1472853, 32018, 461, 12, 28, "Input"],
+Cell[1472853, 32018, 461, 12, 46, "Input"],
 Cell[1473317, 32032, 85, 1, 28, "Output"]
 }, Open  ]],
 Cell[1473417, 32036, 536, 13, 63, "Input"],
@@ -33127,7 +33743,7 @@ Cell[1474406, 32066, 230, 4, 28, "Input"],
 Cell[1474639, 32072, 88, 1, 28, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1474764, 32078, 548, 14, 28, "Input"],
+Cell[1474764, 32078, 548, 14, 46, "Input"],
 Cell[1475315, 32094, 107, 1, 28, "Output"]
 }, Open  ]],
 Cell[1475437, 32098, 435, 11, 46, "Input"],
@@ -33150,7 +33766,8 @@ Cell[1477388, 32167, 146, 3, 28, "Output"]
 Cell[CellGroupData[{
 Cell[1477571, 32175, 103, 1, 28, "Input"],
 Cell[1477677, 32178, 131, 3, 28, "Output"]
-}, Open  ]]
+}, Open  ]],
+Cell[1477823, 32184, 25004, 614, 2324, "Input"]
 }
 ]
 *)
