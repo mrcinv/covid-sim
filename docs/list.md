@@ -1,8 +1,13 @@
 #### More selected countries 
 
-![](countries/plotdump/mscprojplots.png)
+Some countries with more than 100 cases per 100k of population
+![](countries/plotdump/moremscprojplots.png)
+
+Some countries with less than 100 cases per 100k 
+![](countries/plotdump/lessmscprojplots.png)
 
 A list of countries for which the projections are available:
+* [Spain](countries/spain.md)
 * [Canada](countries/canada.md)
 * [Australia](countries/australia.md)
 * [New Zealand](countries/newzealand.md)
