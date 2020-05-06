@@ -3,7 +3,7 @@
 Some countries with more than 100 cases per 100k of population
 ![](countries/plotdump/moremscprojplots.png)
 
-Some countries with less than 100 cases per 100k 
+Some countries with less than 100 cases per 100k
 ![](countries/plotdump/lessmscprojplots.png)
 
 A list of countries for which the projections are available:
