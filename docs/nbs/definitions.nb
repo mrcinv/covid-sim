@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    103843,       2626]
-NotebookOptionsPosition[    103545,       2611]
-NotebookOutlinePosition[    103901,       2627]
-CellTagsIndexPosition[    103858,       2624]
+NotebookDataLength[    105210,       2658]
+NotebookOptionsPosition[    104912,       2643]
+NotebookOutlinePosition[    105268,       2659]
+CellTagsIndexPosition[    105225,       2656]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1054,7 +1054,7 @@ Cell[BoxData[{
  RowBox[{"Clear", "[", 
   RowBox[{"somegraphs", ",", "grafprojtime"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"grafprojtime", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"grafprojtime", "=", "21"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"somegraphs", "[", 
    RowBox[{
@@ -2413,6 +2413,7 @@ time)\>\"", "}"}]}], ",",
          "{", "\"\<bootstrap estimates for final number of cases (at the \
 time)\>\"", "}"}]}], ",", 
         RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+        RowBox[{"PlotRange", "->", "All"}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"bestfitplot", "=", 
@@ -2430,6 +2431,7 @@ time)\>\"", "}"}]}], ",",
          RowBox[{
          "{", "\"\<best fit estimates for final number of cases (at the time)\
 \>\"", "}"}]}], ",", 
+        RowBox[{"PlotRange", "->", "All"}], ",", 
         RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
         RowBox[{"PlotTheme", "->", "\"\<Detailed\>\""}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
@@ -2488,11 +2490,38 @@ time)\>\"", "}"}]}], ",",
          RowBox[{"{", 
           RowBox[{"curdatelist", ",", "lfunvals"}], "}"}], "]"}]}], "]"}]}], 
      ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"fip0", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], 
+         RowBox[{
+          RowBox[{"10", "^", "5"}], "/", "population"}]}], ">", 
+        "grafthreshhold"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"morecountrybootabcs", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"morecountrybootabcs", ",", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"curdatelist", ",", "lfunvals"}], "}"}], "]"}]}], "]"}]}],
+        ",", "\[IndentingNewLine]", 
+       RowBox[{"lesscountrybootabcs", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"lesscountrybootabcs", ",", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"curdatelist", ",", "lfunvals"}], "}"}], "]"}]}], 
+         "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     
      RowBox[{"{", 
       RowBox[{
       "graf", ",", "loggraf", ",", "dfpplot", ",", "progplot", ",", 
        "pastfinalplot", ",", "bootabc"}], "}"}]}]}], "\[IndentingNewLine]", 
-   "]"}]}], "\[IndentingNewLine]"}], "Input",
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"grafthreshhold", "=", "100"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.795524361302558*^9, 3.7955243617659187`*^9}, {
    3.795580219414031*^9, 3.795580248958391*^9}, {3.795661074153103*^9, 
    3.795661074438863*^9}, {3.7956707847568274`*^9, 3.795670785276594*^9}, {
@@ -2607,7 +2636,10 @@ time)\>\"", "}"}]}], ",",
    3.7968899754080267`*^9, 3.796889975769368*^9}, {3.796891441332287*^9, 
    3.796891441859468*^9}, {3.7968943464919567`*^9, 3.796894368231172*^9}, {
    3.796974438817933*^9, 3.796974457681243*^9}, {3.797562150320579*^9, 
-   3.79756215132263*^9}}]
+   3.79756215132263*^9}, {3.797562416667664*^9, 3.7975624521802263`*^9}, {
+   3.7975625163681707`*^9, 3.7975626006800957`*^9}, {3.797563411699988*^9, 
+   3.797563428717804*^9}, {3.7975642277859383`*^9, 3.797564227888878*^9}, {
+   3.797571309024639*^9, 3.797571314351924*^9}}]
 },
 WindowSize->{610, 577},
 WindowMargins->{{0, Automatic}, {Automatic, 29}},
@@ -2627,7 +2659,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 1685, 56, 97, "Input"],
-Cell[2246, 78, 101295, 2531, 9319, "Input"]
+Cell[2246, 78, 102662, 2563, 9438, "Input"]
 }
 ]
 *)
