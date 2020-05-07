@@ -46,7 +46,7 @@
    </Function>
    <Number>21</Number>
    <Number>21</Number>
-   <Number>10</Number>
+   <Number>1</Number>
    <Number>0</Number>
   </Function>
   <Function>
@@ -227,6 +227,21 @@
    <Number>28</Number>
    <Number>14</Number>
    <Number>5</Number>
+   <Number>0</Number>
+  </Function>
+  <Function>
+   <Symbol>List</Symbol>
+   <String>Serbia</String>
+   <Number>50</Number>
+   <Function>
+    <Symbol>List</Symbol>
+    <Number Precision=''>10139.282988917936</Number>
+    <Number Precision=''>113.99752601777078</Number>
+    <Number Precision=''>0.1410478828462318</Number>
+   </Function>
+   <Number>21</Number>
+   <Number>14</Number>
+   <Number>10</Number>
    <Number>0</Number>
   </Function>
  </Function>
